@@ -1,0 +1,2255 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Caso no separable general &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'punto3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Objetivo" href="metodo.html" />
+    <link rel="prev" title="2" href="op2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/uninorte.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/uninorte.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Informe Proyecto Final Optimizacion Matematica
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduc.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Caso no separable general</strong></a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="metodo.html">Objetivo</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="conclu.html">Conclusiones</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpunto3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/punto3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Caso no separable general</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Caso no separable general</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficamente"><strong>Gráficamente</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo"><strong>Objetivo:</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-dual-de-svm">Problema Dual de SVM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-restricciones-activas"><strong>Método de restricciones activas</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-generales">Pasos generales</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-trick"><strong>Kernel Trick</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias"><strong>Librerias</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion"><strong>Implementación</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones"><strong>Conclusiones</strong></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <ol class="arabic simple" start="3">
+<li><p>Implemente el método de restricciones activas visto en clase y úselo para resolver el problema dual
+de SVM (caso no separable general) con la base de datos flor de iris.
+(<a class="reference external" href="https://es.wikipedia.org/wiki/Conjunto_de_datos_flor_iris">https://es.wikipedia.org/wiki/Conjunto_de_datos_flor_iris</a>) para clasificar las clases de plantas Iris-Setosa e Iris-Virgínica, usando <span class="math notranslate nohighlight">\(C=1\)</span> y el kernel radial con <span class="math notranslate nohighlight">\(\gamma = 0.01\)</span>. Tome como punto inicial cualquiera factible de su elección. Determine cuántos vectores de soporte son obtenidos, el tiempo que tomó la corrida y el número de iteraciones realizadas</p></li>
+</ol>
+<section class="tex2jax_ignore mathjax_ignore" id="caso-no-separable-general">
+<h1><strong>Caso no separable general</strong><a class="headerlink" href="#caso-no-separable-general" title="Permalink to this heading">#</a></h1>
+<p>En esta situación, no hay un clasificador lineal capaz de asignar de manera precisa todas las etiquetas a los datos; es probable que se produzcan errores de clasificación. Se identifican tres categorías de datos que no se clasifican correctamente.</p>
+<ol class="arabic simple">
+<li><p>Datos que se encuentran en la frontera o fuera del margen y a su vez están en el lado correcto del clasificador, esto es,
+$<span class="math notranslate nohighlight">\(y_nf(x_n)\geq 1\)</span><span class="math notranslate nohighlight">\(
+ Estos datos no cometen margen de error, es decir,  que sus variables de holgura están dadas por: \)</span>\xi_n=0$</p></li>
+<li><p>Datos que están en el lado correcto del clasificador pero que a su vez están dentro del margen, esto es,
+$<span class="math notranslate nohighlight">\(0&lt;y_nf(x_n)&lt;1\)</span><span class="math notranslate nohighlight">\(
+ Estos datos, a diferencia del caso anterior sí comenten un margen de error, y se tiene que sus variables de holgura: \)</span>0&lt;\xi_n&lt;1$</p></li>
+<li><p>Datos que se encuentran en el lado incorrecto del clasificador, esto es,
+$<span class="math notranslate nohighlight">\(y_nf(x_n)\leq 0\)</span><span class="math notranslate nohighlight">\(
+ Estos datos comenten un error, y se tiene que sus variables de holgura: \)</span>\xi_n\geq 1$</p></li>
+</ol>
+<section id="graficamente">
+<h2><strong>Gráficamente</strong><a class="headerlink" href="#graficamente" title="Permalink to this heading">#</a></h2>
+<p><img alt="non_separable_classes_svm.png" src="data:image/png;base64,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" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="objetivo">
+<h1><strong>Objetivo:</strong><a class="headerlink" href="#objetivo" title="Permalink to this heading">#</a></h1>
+<p>Encontrar el hiperplano clasificador que logre la mayor separación entre clases, maximizando el margen, y al mismo tiempo minimizando el número de errores, incluyendo los que se permiten dentro de un margen de error.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="problema-dual-de-svm">
+<h1>Problema Dual de SVM<a class="headerlink" href="#problema-dual-de-svm" title="Permalink to this heading">#</a></h1>
+<p>La formulación del problema dual de SVM implica maximizar una función sujeta a ciertas restricciones, dado un conjunto de restricciones y una función de pérdida <span class="math notranslate nohighlight">\(L\)</span>. En términos más específicos, el problema dual se expresa de la siguiente manera:
+$<span class="math notranslate nohighlight">\(\max W(\lambda)=\sum^N_{n=1}-\frac{1}{2}\sum^N_{n=1}\sum^N_{m=1}\lambda_i\lambda_jy_iy_j\langle x_n,x_m\rangle\)</span><span class="math notranslate nohighlight">\(
+Sujeto a:
+\)</span><span class="math notranslate nohighlight">\(0\leq \lambda_n\leq C,\;\;\; n=1,2,\ldots,N,\;\;\; \sum^N_{n=1}\lambda_ny_n=0\)</span>$
+Donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N\)</span> es el número de ejemplos de entrenamiento.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda\)</span> son los multiplicadores de Lagrange.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> es el vector de etiquetas.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> es un parámetro de penalización.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="metodo-de-restricciones-activas">
+<h1><strong>Método de restricciones activas</strong><a class="headerlink" href="#metodo-de-restricciones-activas" title="Permalink to this heading">#</a></h1>
+<p>es una técnica utilizada para resolver problemas de optimización con restricciones. En el contexto de máquinas de soporte vectorial (SVM), se utiliza para encontrar la solución del problema dual. A continuación, se proporcionará una descripción general del método y cómo aplicarlo al problema dual de SVM.</p>
+<section id="pasos-generales">
+<h2>Pasos generales<a class="headerlink" href="#pasos-generales" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Inicialización</strong>:
+Se empieza con un conjunto inical de multiplicadores de Lagrange <span class="math notranslate nohighlight">\(\lambda\)</span> (puede ser cualquier punto factible).</p></li>
+<li><p><strong>Optimización iterativa:</strong>
+En cada iteración se seleccionan las restricciones activas y se resuleve el problema de optimización respecto a ellas.</p></li>
+<li><p><strong>Actualización de multiplicadores:</strong>
+Se actualizan los multiplicadores de Lagrange de acuerdo con el problema de optimización resuelto en el paso anterior.</p></li>
+<li><p><strong>Convergencia</strong>: Repita los pasos <span class="math notranslate nohighlight">\(2\)</span> y <span class="math notranslate nohighlight">\(3\)</span> hasta que <span class="math notranslate nohighlight">\(d=0\)</span> y se cumplan las condiciones KKT, si no se cumplen las condiciones KKT, actualice el conjunto de restricciones activas.</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="kernel-trick">
+<h1><strong>Kernel Trick</strong><a class="headerlink" href="#kernel-trick" title="Permalink to this heading">#</a></h1>
+<p>Durante el proceso de entrenamiento de una Máquina de Soporte Vectorial (SVM), el algoritmo aprende la importancia de cada punto de datos para definir el límite de decisión entre las clases. Es crucial destacar que solo un subconjunto de puntos de entrenamiento, conocidos como “vectores de soporte”, son esenciales para determinar esta frontera de decisión.</p>
+<p>Cuando se realiza una predicción para un nuevo punto de datos, la SVM evalúa la distancia de este punto a cada uno de los vectores de soporte. La clasificación se realiza considerando estas distancias y la importancia asignada a cada vector de soporte durante el entrenamiento, la cual se almacena en el atributo ‘dual_coef_’ de la clase SVC. La medida de distancia entre puntos de datos, en este contexto, se calcula utilizando un kernel gaussiano. En la fórmula proporcionada:
+$<span class="math notranslate nohighlight">\(K_{rbf}=e^{(\gamma ||x_1-x_2||^2)}\)</span><span class="math notranslate nohighlight">\(
+Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<span class="math notranslate nohighlight">\( representan puntos de datos,\)</span>||\cdot||<span class="math notranslate nohighlight">\( indica la distancia euclidiana, y \)</span>\gamma<span class="math notranslate nohighlight">\( es un parámetro que controla el ancho del kernel gaussiano. El valor de \)</span>\gamma<span class="math notranslate nohighlight">\( actúa como un factor de escala general que influye en la noción de distancia entre dos puntos de la SVM. En resumen, \)</span>\gamma$  define cómo un vector de soporte da forma al límite de decisión en su vecindad cercana.</p>
+<section id="librerias">
+<h2><strong>Librerias</strong><a class="headerlink" href="#librerias" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">cvxopt</span> <span class="kn">import</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">solvers</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">rbf_kernel</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="implementacion">
+<h2><strong>Implementación</strong><a class="headerlink" href="#implementacion" title="Permalink to this heading">#</a></h2>
+<p><strong>Paso 1:</strong> preparación de Datos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
+
+<span class="c1"># Clasificación binaria entre Iris-Setosa (clase 0) e Iris-Virginica (clase 2)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">y</span><span class="p">[(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Convertir las etiquetas de la clase 2 a 1</span>
+
+<span class="c1"># Dividir los datos en conjuntos de entrenamiento y prueba</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Escalar los datos</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Paso 2:</strong> Definición del problema dual de SVM</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rbf_kernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dual_svm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="c1"># Matriz de Gram</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+            <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">gamma</span><span class="p">)</span>
+
+    <span class="c1"># Problema de optimización cuadrática</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">K</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)])</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Paso 3:</strong> Implementación del método de restricciones activas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_svm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="c1"># Define the active set solver with KKT conditions using cvxopt</span>
+    <span class="k">def</span> <span class="nf">active_set_solver</span><span class="p">(</span><span class="n">x_k</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+        <span class="c1"># Define the quadratic programming subproblem</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_k</span><span class="p">))</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)]))</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">]))</span>
+
+        <span class="c1"># Solve the quadratic programming subproblem</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+        <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+        <span class="c1"># Check if the conditions of optimality are satisfied</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
+            <span class="n">lambda_</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="n">n_samples</span><span class="p">])</span>
+            <span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">x_k</span><span class="p">)))</span>
+            <span class="n">kkt_conditions_result</span> <span class="o">=</span> <span class="n">kkt_conditions</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">kkt_conditions_result</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="kc">True</span>
+
+        <span class="c1"># Update the active set</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">u</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+            <span class="n">W_k</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">W_k</span><span class="p">,</span> <span class="kc">False</span>
+
+        <span class="c1"># Move in the direction without leaving the feasibility region</span>
+        <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">W_k</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">d</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_indices</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="kc">False</span>  <span class="c1"># No valid indices, return without updating</span>
+
+        <span class="n">alpha_k</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">((</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valid_indices</span><span class="p">))</span>
+        <span class="n">x_k1</span> <span class="o">=</span> <span class="n">x_k</span> <span class="o">+</span> <span class="n">alpha_k</span> <span class="o">*</span> <span class="n">d</span>
+
+        <span class="c1"># Update the active set with any blocking constraints</span>
+        <span class="n">blocking_constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valid_indices</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k1</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+        <span class="n">W_k1</span> <span class="o">=</span> <span class="n">W_k</span> <span class="o">+</span> <span class="n">blocking_constraints</span>
+        <span class="k">return</span> <span class="n">x_k1</span><span class="p">,</span> <span class="n">W_k1</span><span class="p">,</span> <span class="kc">False</span>
+
+    <span class="c1"># Initialize x_0, W_0</span>
+    <span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span><span class="o">*</span><span class="mi">0</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>  <span class="c1"># Assuming a simple constraint Bx &lt;= p</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">W_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_0</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+
+    <span class="c1"># Iterate until convergence</span>
+    <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_0</span>
+    <span class="n">W_k</span> <span class="o">=</span> <span class="n">W_0</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>  <span class="c1"># You may need to adjust the maximum number of iterations</span>
+        <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">optimal</span> <span class="o">=</span> <span class="n">active_set_solver</span><span class="p">(</span><span class="n">x_k</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">optimal</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="c1"># Calculate support vectors and bias</span>
+    <span class="n">support_vectors</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">W_k</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">support_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">W_k</span><span class="p">]</span>
+    <span class="n">bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">support_labels</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_k</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="n">W_k</span><span class="p">]</span> <span class="o">*</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">support_vectors</span><span class="p">,</span> <span class="n">support_vectors</span><span class="p">,</span> <span class="n">gamma</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># Additional results</span>
+    <span class="n">num_support_vectors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">W_k</span><span class="p">)</span>
+    <span class="n">runtime</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+
+    <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">,</span> <span class="n">runtime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Paso 4:</strong> Entrenar y evaluar el modelo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell start&quot;</span><span class="p">)</span>
+<span class="c1"># Your existing code for C, gamma, and fitting the SVM</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Fit SVM and get results</span>
+<span class="n">alpha</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">,</span> <span class="n">runtime</span> <span class="o">=</span> <span class="n">fit_svm</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+
+<span class="c1"># Display results in a table</span>
+<span class="n">results_table</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;Número de vectores de soporte&quot;</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Tiempo de corrida&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">runtime</span><span class="si">}</span><span class="s2"> segundos&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">results_table</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;fancy_grid&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell end&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cell start
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+     pcost       dcost       gap    pres   dres
+ 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
+ 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
+ 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
+ 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
+ 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
+ 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
+ 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
+ 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
+ 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
+ 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
+10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
+11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
+Optimal solution found.
+╒═══════════════════════════════╤═════════════════════════════╕
+│ Número de vectores de soporte │ 80                          │
+├───────────────────────────────┼─────────────────────────────┤
+│ Tiempo de corrida             │ 0.4399070739746094 segundos │
+╘═══════════════════════════════╧═════════════════════════════╛
+Cell end
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_svm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">support_vectors</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">support_vectors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Draw support vectors</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">support_vectors</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">support_vectors</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create a meshgrid to draw decision boundary</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="mf">.02</span>
+        <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">h</span><span class="p">))</span>
+
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]</span> <span class="o">-</span> <span class="n">support_vectors</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span> <span class="o">+</span> <span class="n">bias</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="c1"># Draw decision boundary (hyperplane)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Paired</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SVM Result&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">plot_svm</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">alpha</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">gamma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/daee6993965edc8b8c706fed4dfce4974896d2de9bab6a378bcce82a995f83e1.png" src="_images/daee6993965edc8b8c706fed4dfce4974896d2de9bab6a378bcce82a995f83e1.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusiones">
+<h1><strong>Conclusiones</strong><a class="headerlink" href="#conclusiones" title="Permalink to this heading">#</a></h1>
+<ol class="arabic">
+<li><p><strong>Número de Vectores de Soporte (80):</strong></p>
+<p>Se mantuvieron 80 vectores de soporte durante la optimización. Este número indica la cantidad de instancias de datos más relevantes para definir el margen de decisión entre las clases Iris-Setosa e Iris-Virginica. Es un conjunto relativamente pequeño, lo que puede ser beneficioso en términos de eficiencia computacional y generalización del modelo.</p>
+</li>
+<li><p><strong>Tiempo de Corrida (0.44 segundos):</strong></p>
+<p>El tiempo de ejecución de aproximadamente 0.44 segundos es bastante rápido y respalda la eficiencia del método de restricciones activas en la resolución del problema dual de SVM para este conjunto de datos.</p>
+</li>
+<li><p><strong>Solución Óptima Encontrada:</strong></p>
+<p>La indicación de “Optimal solution found” en la salida confirma que el algoritmo alcanzó una solución óptima. Este es un resultado deseado para el problema de SVM, ya que significa que se ha encontrado un conjunto de pesos y sesgo que maximiza el margen entre las clases mientras mantiene la precisión en la clasificación.</p>
+</li>
+<li><p><strong>Baja Brecha (gap):</strong></p>
+<p>La brecha (gap) cercana a cero (2e-08 en la última iteración) indica que la diferencia entre la función objetivo primal y dual es mínima. Esta pequeña brecha sugiere que la solución obtenida es de alta calidad y se acerca a la solución óptima.</p>
+</li>
+<li><p><strong>Equilibrio entre Costo Primal y Dual:</strong></p>
+<p>El hecho de que el algoritmo esté minimizando el costo primal y maximizando el costo dual sugiere un buen equilibrio entre la clasificación correcta de los datos y la maximización del margen entre las clases.</p>
+</li>
+<li><p><strong>Residuales:</strong></p>
+<p>Los valores de “pres” y “dres” cercanos a cero indican que las restricciones del problema primal y dual están bien satisfechas en la solución encontrada. Esto respalda la calidad y validez de la solución obtenida.</p>
+</li>
+<li><p><strong>Balance en la Optimización:</strong></p>
+<p>La combinación de valores en “pcost” y “dcost”, junto con la brecha pequeña, sugiere que el algoritmo logró un buen equilibrio entre la minimización de errores de clasificación y la maximización del margen.</p>
+</li>
+</ol>
+<p>En resumen, la salida proporciona evidencia de una optimización exitosa y bien equilibrada en el problema dual de SVM, respaldando la clasificación efectiva de las clases Iris-Setosa e Iris-Virginica en el conjunto de datos Iris. La convergencia rápida y los valores pequeños de residuales sugieren una solución robusta y eficiente.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="op2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="metodo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Objetivo</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Caso no separable general</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graficamente"><strong>Gráficamente</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo"><strong>Objetivo:</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-dual-de-svm">Problema Dual de SVM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-restricciones-activas"><strong>Método de restricciones activas</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-generales">Pasos generales</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-trick"><strong>Kernel Trick</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias"><strong>Librerias</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion"><strong>Implementación</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones"><strong>Conclusiones</strong></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1127 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Objetivo &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'metodo';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conclusiones" href="conclu.html" />
+    <link rel="prev" title="Caso no separable general" href="punto3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/uninorte.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/uninorte.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Informe Proyecto Final Optimizacion Matematica
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduc.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="punto3.html"><strong>Caso no separable general</strong></a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Objetivo</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="conclu.html">Conclusiones</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmetodo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/metodo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Objetivo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Objetivo</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-utilizadas">Librerías Utilizadas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-binaria-de-pulsares">Clasificación binaria de púlsares</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-pulsar">Datos Pulsar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-explicativas">Variables Explicativas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-respuesta">Variables Respuesta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-y-conclusiones">Resultados y Conclusiones</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-la-presencia-y-ausencia-de-reptiles-en-cerrejon">Clasificación de la presencia y ausencia de reptiles en Cerrejón</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-reptiles">Datos Reptiles</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variables Explicativas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Variables Respuesta</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svc">SVC</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Resultados y Conclusiones</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="objetivo">
+<h1>Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this heading">#</a></h1>
+<p>El objetivo de este código es implementar un clasificador de Máquinas de Soporte Vectorial (SVM) utilizando la biblioteca Scikit-Learn en Python. El modelo SVM se ajusta a los datos de entrada y se optimiza mediante una búsqueda en cuadrícula de hiperparámetros. Posteriormente, se evalúa el rendimiento del modelo mediante la construcción de una curva ROC y la visualización de una matriz de confusión.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="librerias-utilizadas">
+<h1>Librerías Utilizadas<a class="headerlink" href="#librerias-utilizadas" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> 
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="clasificacion-binaria-de-pulsares">
+<h1>Clasificación binaria de púlsares<a class="headerlink" href="#clasificacion-binaria-de-pulsares" title="Permalink to this heading">#</a></h1>
+<p><img alt="Mi Imagen" src="_images/pulsar.jpg" />
+un púlsar es una estrella de neutrones que emite un haz de radiación que barre el espacio como un faro. Los púlsares se forman cuando una estrella masiva colapsa al final de su vida, dejando atrás un remanente diminuto y denso. La estrella de neutrones gira muy rápidamente, y su campo magnético acelera partículas a velocidades cercanas a la de la luz. Estas partículas emiten radiación, que se enfoca en un haz por el fuerte campo magnético de la estrella.</p>
+<section id="datos-pulsar">
+<h2>Datos Pulsar<a class="headerlink" href="#datos-pulsar" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="variables-explicativas">
+<h2>Variables Explicativas<a class="headerlink" href="#variables-explicativas" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Mean_Integrated</strong>
+Mean of Observations.</p></li>
+<li><p><strong>SD</strong>
+Standard deviation of Observations.</p></li>
+<li><p><strong>EK</strong>
+Excess kurtosis of Observations.</p></li>
+<li><p><strong>Skewness</strong>
+In probability theory and statistics, skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable about its mean. Skewness of Observations.</p></li>
+<li><p><strong>Mean_DMSNR_Curve</strong>
+Mean of DM SNR CURVE of Observations.</p></li>
+<li><p><strong>SD_DMSNR_Curve</strong>
+Standard deviation of DM SNR CURVE of Observations.</p></li>
+<li><p><strong>EK_DMSNR_Curve</strong>
+Excess kurtosis of DM SNR CURVE of Observations.</p></li>
+<li><p><strong>Skewness_DMSNR_Curve</strong>
+Skewness of DM SNR CURVE of Observations.</p></li>
+</ul>
+</section>
+<section id="variables-respuesta">
+<h2>Variables Respuesta<a class="headerlink" href="#variables-respuesta" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Class:</strong></p>
+<ul>
+<li><p>0: Not a pulsar</p></li>
+<li><p>1: Pulsar</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;trainX.csv&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">datos</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># datos en conjuntos de entrenamiento y prueba</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Hiperparámetros</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svm_classifier</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># validación cruzada estratificada de 10 folds</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svm_classifier</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#almacenar ls metrica de cada validacion cruzada</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span>
+<span class="n">stds</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;std_test_score&#39;</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
+
+<span class="n">results_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">mean</span><span class="p">,</span> <span class="n">stdev</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">stds</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;MeanROCAUC&#39;</span><span class="p">:</span> <span class="n">mean</span><span class="p">,</span> <span class="s1">&#39;SD&#39;</span><span class="p">:</span> <span class="n">stdev</span><span class="p">,</span> <span class="s1">&#39;Parameters&#39;</span><span class="p">:</span> <span class="n">param</span><span class="p">}</span>
+    <span class="n">results_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result_dict</span><span class="p">)</span>
+<span class="n">Metrica</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_list</span><span class="p">)</span>
+
+<span class="c1">#hiperparámetros</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hiperparámetros:&quot;</span><span class="p">,</span> <span class="n">best_params</span><span class="p">)</span>
+
+<span class="c1"># Obtener el modelo con los mejores hiperparámetros</span>
+<span class="n">best_svm</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">y_pred_proba</span> <span class="o">=</span> <span class="n">best_svm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Obtener las probabilidades de la clase positiva</span>
+
+<span class="c1"># Calcular la métrica ROC-AUC</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC-AUC del modelo:&quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
+
+<span class="c1">#matriz de confusión</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">conf_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicciones&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valores reales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriz de Confusión&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hiperparámetros: {&#39;C&#39;: 0.1, &#39;gamma&#39;: &#39;scale&#39;, &#39;kernel&#39;: &#39;linear&#39;}
+ROC-AUC del modelo: 0.9944207604589086
+</pre></div>
+</div>
+<img alt="_images/019c8c8f92291def5fad023c365e009362191826379b453ba9ce814a10b4096e.png" src="_images/019c8c8f92291def5fad023c365e009362191826379b453ba9ce814a10b4096e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Metrica</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MeanROCAUC</th>
+      <th>SD</th>
+      <th>Parameters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.994080</td>
+      <td>0.001543</td>
+      <td>{'C': 0.1, 'gamma': 'scale', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.992847</td>
+      <td>0.001675</td>
+      <td>{'C': 0.1, 'gamma': 'scale', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.989598</td>
+      <td>0.001740</td>
+      <td>{'C': 0.1, 'gamma': 'scale', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.994080</td>
+      <td>0.001543</td>
+      <td>{'C': 0.1, 'gamma': 'auto', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.992849</td>
+      <td>0.001676</td>
+      <td>{'C': 0.1, 'gamma': 'auto', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.989594</td>
+      <td>0.001740</td>
+      <td>{'C': 0.1, 'gamma': 'auto', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.994061</td>
+      <td>0.001543</td>
+      <td>{'C': 1, 'gamma': 'scale', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.992998</td>
+      <td>0.001788</td>
+      <td>{'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.990837</td>
+      <td>0.002314</td>
+      <td>{'C': 1, 'gamma': 'scale', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.994061</td>
+      <td>0.001543</td>
+      <td>{'C': 1, 'gamma': 'auto', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.993002</td>
+      <td>0.001790</td>
+      <td>{'C': 1, 'gamma': 'auto', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.990838</td>
+      <td>0.002315</td>
+      <td>{'C': 1, 'gamma': 'auto', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.994003</td>
+      <td>0.001583</td>
+      <td>{'C': 10, 'gamma': 'scale', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.992482</td>
+      <td>0.001932</td>
+      <td>{'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.991703</td>
+      <td>0.002446</td>
+      <td>{'C': 10, 'gamma': 'scale', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.994003</td>
+      <td>0.001583</td>
+      <td>{'C': 10, 'gamma': 'auto', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.992494</td>
+      <td>0.001932</td>
+      <td>{'C': 10, 'gamma': 'auto', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.991703</td>
+      <td>0.002451</td>
+      <td>{'C': 10, 'gamma': 'auto', 'kernel': 'poly'}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="resultados-y-conclusiones">
+<h2>Resultados y Conclusiones<a class="headerlink" href="#resultados-y-conclusiones" title="Permalink to this heading">#</a></h2>
+<p>El código proporciona un modelo SVM optimizado con los mejores hiperparámetros encontrados mediante búsqueda en cuadrícula.</p>
+<ul class="simple">
+<li><p><strong>C</strong> 0.1</p></li>
+<li><p><strong>gamma</strong> ‘scale’,</p></li>
+<li><p><strong>kernel</strong> ‘linear’</p></li>
+<li><p><strong>Área bajo la curva ROC</strong> 0.9944205317570285</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="clasificacion-de-la-presencia-y-ausencia-de-reptiles-en-cerrejon">
+<h1>Clasificación de la presencia y ausencia de reptiles en Cerrejón<a class="headerlink" href="#clasificacion-de-la-presencia-y-ausencia-de-reptiles-en-cerrejon" title="Permalink to this heading">#</a></h1>
+<p><img alt="imagenRep.jpg" src="attachment:imagenRep.jpg" />
+La zona de La Guajira Cerrejón, en Colombia, es un área de gran diversidad biológica, incluyendo una gran variedad de reptiles. Se han registrado más de 60 especies de reptiles en esta zona, incluyendo serpientes, lagartos, tortugas y caimanes.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="datos-reptiles">
+<h1>Datos Reptiles<a class="headerlink" href="#datos-reptiles" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>Variables Explicativas<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>t_max</strong>
+Representa la temperatura máxima registrada durante un período específico, como un día.</p></li>
+<li><p><strong>solar radiation</strong>
+Hace referencia a la radiación solar medida en el área o ubicación específica. Puede indicar la cantidad de energía solar recibida.</p></li>
+<li><p><strong>speed wind</strong>
+Indica la velocidad del viento en la ubicación dada. Puede medirse en unidades como metros por segundo o kilómetros por hora.</p></li>
+<li><p><strong>t_min</strong>
+Representa la temperatura mínima registrada durante un período específico, como un día.</p></li>
+<li><p><strong>vapr</strong>
+Se refiere a la presión de vapor, que es la presión ejercida por el vapor de agua en el aire. Es un indicador de la cantidad de humedad en el aire.</p></li>
+<li><p><strong>prec</strong>
+Indica la cantidad de precipitación, como lluvia o nieve, registrada en el periodo de tiempo considerado.</p></li>
+<li><p><strong>tavg</strong>
+Representa la temperatura promedio, que es el promedio entre la temperatura máxima y mínima en un periodo específico.</p></li>
+<li><p><strong>Año</strong>
+Indica el año al que corresponde la información del conjunto de datos.</p></li>
+<li><p><strong>Month</strong>
+Representa el mes al que corresponde la información del conjunto de datos.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>Variables Respuesta<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Presencia</strong></p>
+<ul>
+<li><p>0: Ausencia</p></li>
+<li><p>1: Presencia</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">species</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Gonatodes_vittatus.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Escalar los datos para que tengan media cero y varianza unitaria</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">species</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">species</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="svc">
+<h1>SVC<a class="headerlink" href="#svc" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Datos en conjuntos de entrenamiento y prueba</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1">#Hiperparámetros </span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="c1"># validación cruzada estratificada de 10 folds</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+
+<span class="c1">#Almacenar las metricas de cada validación</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]</span>
+<span class="n">stds</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;std_test_score&#39;</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
+<span class="n">results_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">mean</span><span class="p">,</span> <span class="n">stdev</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">stds</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;MeanROCAUC&#39;</span><span class="p">:</span> <span class="n">mean</span><span class="p">,</span> <span class="s1">&#39;SD&#39;</span><span class="p">:</span> <span class="n">stdev</span><span class="p">,</span> <span class="s1">&#39;Parameters&#39;</span><span class="p">:</span> <span class="n">param</span><span class="p">}</span>
+    <span class="n">results_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result_dict</span><span class="p">)</span>
+<span class="n">Metrica</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_list</span><span class="p">)</span>
+
+<span class="c1"># Hiperparametros</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hiperparametros: &quot;</span><span class="p">,</span><span class="n">best_params</span><span class="p">)</span>
+
+<span class="c1"># Crea un modelo con los mejores parámetros</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="o">**</span><span class="n">best_params</span><span class="p">)</span>
+
+<span class="c1"># Entrenamiento del modelo final con los mejores parámetros en el conjunto de entrenamiento</span>
+<span class="n">best_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Realiza predicciones en el conjunto de prueba</span>
+<span class="n">y_prob</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_prob</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Calcula la curva ROC</span>
+<span class="n">fper</span><span class="p">,</span> <span class="n">tper</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob</span><span class="p">)</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fper</span><span class="p">,</span> <span class="n">tper</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AUC-ROC:&quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
+
+<span class="c1">#Matriz de confución</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Predicted 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Predicted 1&#39;</span><span class="p">],</span> <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Actual 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Actual 1&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hiperparametros:  {&#39;C&#39;: 10, &#39;gamma&#39;: &#39;scale&#39;, &#39;kernel&#39;: &#39;rbf&#39;}
+AUC-ROC: 0.9138293085345732
+</pre></div>
+</div>
+<img alt="_images/30f6576b9cad74968aebaad7adedba94ce09f1952f03a7f6ab04769763a99ba8.png" src="_images/30f6576b9cad74968aebaad7adedba94ce09f1952f03a7f6ab04769763a99ba8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Metrica</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MeanROCAUC</th>
+      <th>SD</th>
+      <th>Parameters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.739476</td>
+      <td>0.052987</td>
+      <td>{'C': 0.1, 'gamma': 'scale', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.766732</td>
+      <td>0.046945</td>
+      <td>{'C': 0.1, 'gamma': 'scale', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.739541</td>
+      <td>0.041027</td>
+      <td>{'C': 0.1, 'gamma': 'scale', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.739476</td>
+      <td>0.052987</td>
+      <td>{'C': 0.1, 'gamma': 'auto', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.767309</td>
+      <td>0.048829</td>
+      <td>{'C': 0.1, 'gamma': 'auto', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.740746</td>
+      <td>0.045044</td>
+      <td>{'C': 0.1, 'gamma': 'auto', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.747610</td>
+      <td>0.052901</td>
+      <td>{'C': 1, 'gamma': 'scale', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.859926</td>
+      <td>0.036235</td>
+      <td>{'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.793590</td>
+      <td>0.035201</td>
+      <td>{'C': 1, 'gamma': 'scale', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.747610</td>
+      <td>0.052901</td>
+      <td>{'C': 1, 'gamma': 'auto', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.862245</td>
+      <td>0.036405</td>
+      <td>{'C': 1, 'gamma': 'auto', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.795242</td>
+      <td>0.034751</td>
+      <td>{'C': 1, 'gamma': 'auto', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.746215</td>
+      <td>0.053450</td>
+      <td>{'C': 10, 'gamma': 'scale', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.924051</td>
+      <td>0.022341</td>
+      <td>{'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.844624</td>
+      <td>0.032669</td>
+      <td>{'C': 10, 'gamma': 'scale', 'kernel': 'poly'}</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.746215</td>
+      <td>0.053450</td>
+      <td>{'C': 10, 'gamma': 'auto', 'kernel': 'linear'}</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.924008</td>
+      <td>0.022431</td>
+      <td>{'C': 10, 'gamma': 'auto', 'kernel': 'rbf'}</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.844108</td>
+      <td>0.033124</td>
+      <td>{'C': 10, 'gamma': 'auto', 'kernel': 'poly'}</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="id3">
+<h2>Resultados y Conclusiones<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>El código proporciona un modelo SVM optimizado con los mejores hiperparámetros encontrados mediante búsqueda en cuadrícula.</p>
+<ul class="simple">
+<li><p><strong>C</strong> 10</p></li>
+<li><p><strong>gamma</strong> ‘scale’,</p></li>
+<li><p><strong>kernel</strong> ‘rbf’</p></li>
+<li><p><strong>Área bajo la curva ROC</strong> 0.9138293085345732</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="punto3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Caso no separable general</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="conclu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conclusiones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Objetivo</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias-utilizadas">Librerías Utilizadas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-binaria-de-pulsares">Clasificación binaria de púlsares</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-pulsar">Datos Pulsar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-explicativas">Variables Explicativas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-respuesta">Variables Respuesta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-y-conclusiones">Resultados y Conclusiones</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-la-presencia-y-ausencia-de-reptiles-en-cerrejon">Clasificación de la presencia y ausencia de reptiles en Cerrejón</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-reptiles">Datos Reptiles</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variables Explicativas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Variables Respuesta</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svc">SVC</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Resultados y Conclusiones</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
