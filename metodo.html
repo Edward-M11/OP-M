@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Conclusiones" href="conclu.html" />
-    <link rel="prev" title="Caso no separable general" href="punto3.html" />
+    <link rel="prev" title="Algoritmo del Método de Puntos Interiores" href="Untitled11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,14 +169,17 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introduc.html">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proyecto_optimizacion_svm.html"><strong>Proyecto Final Optimización: SVM</strong></a></li>
 
+
+<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="punto3.html"><strong>Caso no separable general</strong></a></li>
 
 
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="Untitled11.html">Algoritmo del Método de Puntos Interiores</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Objetivo</a></li>
 
 
@@ -383,7 +386,14 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-binaria-de-pulsares">Clasificación binaria de púlsares</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-pulsar">Datos Pulsar</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-explicativas">Variables Explicativas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-respuesta">Variables Respuesta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-respuesta">Variables Respuesta</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-sv">Número de SV</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#para-tener-en-cuenta-en-las-curvas-de-aprendizaje">para tener en cuenta en las curvas de aprendizaje</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-de-aprendizaje">Curvas de aprendizaje</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-y-conclusiones">Resultados y Conclusiones</a></li>
 </ul>
 </li>
@@ -394,7 +404,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svc">SVC</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Resultados y Conclusiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Número de SV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Curvas de aprendizaje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Resultados y Conclusiones</a></li>
 </ul>
 </li>
 </ul>
@@ -427,6 +439,8 @@ document.write(`
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> 
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -541,13 +555,6 @@ Skewness of DM SNR CURVE of Observations.</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hiperparámetros: {&#39;C&#39;: 0.1, &#39;gamma&#39;: &#39;scale&#39;, &#39;kernel&#39;: &#39;linear&#39;}
-ROC-AUC del modelo: 0.9944207604589086
-</pre></div>
-</div>
-<img alt="_images/019c8c8f92291def5fad023c365e009362191826379b453ba9ce814a10b4096e.png" src="_images/019c8c8f92291def5fad023c365e009362191826379b453ba9ce814a10b4096e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -693,6 +700,61 @@ ROC-AUC del modelo: 0.9944207604589086
 </table>
 </div></div></div>
 </div>
+<section id="numero-de-sv">
+<h3>Número de SV<a class="headerlink" href="#numero-de-sv" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_support_vectors1</span> <span class="o">=</span> <span class="n">best_svm</span><span class="o">.</span><span class="n">n_support_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de vectores de soporte para cada clase:&quot;</span><span class="p">,</span> <span class="n">num_support_vectors1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de vectores de soporte para cada clase: [875 873]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="para-tener-en-cuenta-en-las-curvas-de-aprendizaje">
+<h4>para tener en cuenta en las curvas de aprendizaje<a class="headerlink" href="#para-tener-en-cuenta-en-las-curvas-de-aprendizaje" title="Permalink to this heading">#</a></h4>
+<p><img alt="Mi Imagen" src="curva.jpg" /></p>
+</section>
+</section>
+<section id="curvas-de-aprendizaje">
+<h3>Curvas de aprendizaje<a class="headerlink" href="#curvas-de-aprendizaje" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span> <span class="o">=</span> <span class="n">learning_curve</span><span class="p">(</span>
+    <span class="n">best_svm</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span> <span class="n">train_sizes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Calcular las medias y las desviaciones estándar de las puntuaciones de entrenamiento y prueba</span>
+<span class="n">train_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">train_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">test_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Graficar la curva de aprendizaje</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Puntuación de entrenamiento&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_mean</span> <span class="o">+</span> <span class="n">train_std</span><span class="p">,</span> <span class="n">train_mean</span> <span class="o">-</span> <span class="n">train_std</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">test_mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Puntuación de prueba&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">test_mean</span> <span class="o">+</span> <span class="n">test_std</span><span class="p">,</span> <span class="n">test_mean</span> <span class="o">-</span> <span class="n">test_std</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Curva de Aprendizaje&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tamaño del conjunto de entrenamiento&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ROC-AUC&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bfb2c00a6c349dbc2dd22f5df30cd98c21beb80aa0521b682067d2fd2cc4ce9c.png" src="_images/bfb2c00a6c349dbc2dd22f5df30cd98c21beb80aa0521b682067d2fd2cc4ce9c.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="resultados-y-conclusiones">
 <h2>Resultados y Conclusiones<a class="headerlink" href="#resultados-y-conclusiones" title="Permalink to this heading">#</a></h2>
@@ -702,6 +764,8 @@ ROC-AUC del modelo: 0.9944207604589086
 <li><p><strong>gamma</strong> ‘scale’,</p></li>
 <li><p><strong>kernel</strong> ‘linear’</p></li>
 <li><p><strong>Área bajo la curva ROC</strong> 0.9944205317570285</p></li>
+<li><p><strong>Número de Vectores de soporte</strong> Hay 875 vectores de soporte para la primera clase y 873 vectores de soporte para la segunda clase. Esto significa que 461 vectores de soporte en tu modelo SVM entrenado. (5%)</p></li>
+<li><p><strong>Curva de aprendizaje</strong> Note que hay una buena relación entre el sesgo y la varianza durante el entrenaminto logrando un buen ajuste.</p></li>
 </ul>
 </section>
 </section>
@@ -826,11 +890,11 @@ Representa el mes al que corresponde la información del conjunto de datos.</p><
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hiperparametros:  {&#39;C&#39;: 10, &#39;gamma&#39;: &#39;scale&#39;, &#39;kernel&#39;: &#39;rbf&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hiperparametros:  {&#39;C&#39;: 10, &#39;gamma&#39;: &#39;scale&#39;, &#39;kernel&#39;: &#39;rbf&#39;}
 AUC-ROC: 0.9138293085345732
 </pre></div>
 </div>
-<img alt="_images/30f6576b9cad74968aebaad7adedba94ce09f1952f03a7f6ab04769763a99ba8.png" src="_images/30f6576b9cad74968aebaad7adedba94ce09f1952f03a7f6ab04769763a99ba8.png" />
+<img alt="_images/42226e0912478f3b141cc6530cd50f93a05844a7987f37017099d766f4a1844c.png" src="_images/42226e0912478f3b141cc6530cd50f93a05844a7987f37017099d766f4a1844c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -977,13 +1041,82 @@ AUC-ROC: 0.9138293085345732
 </div></div></div>
 </div>
 <section id="id3">
-<h2>Resultados y Conclusiones<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>Número de SV<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_support_vectors</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">n_support_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de vectores de soporte para cada clase:&quot;</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de vectores de soporte para cada clase: [224 237]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>Curvas de aprendizaje<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_learning_curve</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">train_sizes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ylim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">*</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Training examples&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;AUC-ROC Score&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Calcula la curva de aprendizaje</span>
+    <span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_scores</span><span class="p">,</span> <span class="n">test_scores</span> <span class="o">=</span> <span class="n">learning_curve</span><span class="p">(</span>
+        <span class="n">estimator</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">train_sizes</span><span class="o">=</span><span class="n">train_sizes</span><span class="p">)</span>
+    
+    <span class="c1"># Calcula las medias y desviaciones estándar de los puntajes</span>
+    <span class="n">train_scores_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">train_scores_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">train_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">test_scores_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">test_scores_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">test_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Grafica las curvas de aprendizaje</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_scores_mean</span> <span class="o">-</span> <span class="n">train_scores_std</span><span class="p">,</span>
+                     <span class="n">train_scores_mean</span> <span class="o">+</span> <span class="n">train_scores_std</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">test_scores_mean</span> <span class="o">-</span> <span class="n">test_scores_std</span><span class="p">,</span>
+                     <span class="n">test_scores_mean</span> <span class="o">+</span> <span class="n">test_scores_std</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">train_scores_mean</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Training score&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_sizes</span><span class="p">,</span> <span class="n">test_scores_mean</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cross-validation score&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plt</span>
+
+<span class="c1"># Visualiza la curva de aprendizaje para tu modelo</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Curva de Aprendizaje (SVM)&quot;</span>
+<span class="n">plot_learning_curve</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/074a586a1fc5df95af391cf3f0467922d5e918de7054da9e34eafc867fe0fb6c.png" src="_images/074a586a1fc5df95af391cf3f0467922d5e918de7054da9e34eafc867fe0fb6c.png" />
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>Resultados y Conclusiones<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>El código proporciona un modelo SVM optimizado con los mejores hiperparámetros encontrados mediante búsqueda en cuadrícula.</p>
 <ul class="simple">
 <li><p><strong>C</strong> 10</p></li>
 <li><p><strong>gamma</strong> ‘scale’,</p></li>
 <li><p><strong>kernel</strong> ‘rbf’</p></li>
 <li><p><strong>Área bajo la curva ROC</strong> 0.9138293085345732</p></li>
+<li><p><strong>Número de Vectores de soporte</strong> Hay 224 vectores de soporte para la primera clase y 237 vectores de soporte para la segunda clase. Esto significa que 461 vectores de soporte en tu modelo SVM entrenado. (40%)</p></li>
+<li><p><strong>Curva de aprendizaje</strong> En un inicio se visualiza una varianza muy alta sin embargo, al final logra un buen ajuste.</p></li>
 </ul>
 </section>
 </section>
@@ -1019,12 +1152,12 @@ AUC-ROC: 0.9138293085345732
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="punto3.html"
+       href="Untitled11.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Caso no separable general</strong></p>
+        <p class="prev-next-title">Algoritmo del Método de Puntos Interiores</p>
       </div>
     </a>
     <a class="right-next"
@@ -1056,7 +1189,14 @@ AUC-ROC: 0.9138293085345732
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-binaria-de-pulsares">Clasificación binaria de púlsares</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datos-pulsar">Datos Pulsar</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-explicativas">Variables Explicativas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-respuesta">Variables Respuesta</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-respuesta">Variables Respuesta</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-sv">Número de SV</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#para-tener-en-cuenta-en-las-curvas-de-aprendizaje">para tener en cuenta en las curvas de aprendizaje</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curvas-de-aprendizaje">Curvas de aprendizaje</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-y-conclusiones">Resultados y Conclusiones</a></li>
 </ul>
 </li>
@@ -1067,7 +1207,9 @@ AUC-ROC: 0.9138293085345732
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svc">SVC</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Resultados y Conclusiones</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Número de SV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Curvas de aprendizaje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Resultados y Conclusiones</a></li>
 </ul>
 </li>
 </ul>

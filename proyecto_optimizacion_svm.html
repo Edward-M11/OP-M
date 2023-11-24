@@ -1,0 +1,1381 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Proyecto Final Optimización: SVM &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'proyecto_optimizacion_svm';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2" href="op2.html" />
+    <link rel="prev" title="Introducción" href="introduc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/uninorte.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/uninorte.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Informe Proyecto Final Optimizacion Matematica
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduc.html">Introducción</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Proyecto Final Optimización: SVM</strong></a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="punto3.html"><strong>Caso no separable general</strong></a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Untitled11.html">Algoritmo del Método de Puntos Interiores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo.html">Objetivo</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="conclu.html">Conclusiones</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fproyecto_optimizacion_svm.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/proyecto_optimizacion_svm.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Proyecto Final Optimización: SVM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Proyecto Final Optimización: SVM</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias">Librerías</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjunto-de-datos-utilizado">Conjunto de datos utilizado</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#desarrollo">Desarrollo</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-primal-de-svm">Problema Primal de SVM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-dual-de-svm">Problema Dual de SVM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-separable-clasificacion-setosa-y-versicolor"><strong>Caso Separable:</strong> Clasificación Setosa y Versicolor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-primal">Problema primal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-dual">Problema Dual</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probar-condiciones-de-optimalidad-kkt">Probar Condiciones de Optimalidad KKT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-de-clasificacion">Error de clasificación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-no-separable-clasificacion-versicolor-y-virginica"><strong>Caso No Separable:</strong> Clasificación Versicolor y Virgínica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Problema Primal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Problema Dual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probar-condiciones-kkt">Probar condiciones KKT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Error de Clasificación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-holgura">Variables de Holgura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-no-separable">Caso No separable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-los-experimentos-anteriores">Conclusiones de los experimentos anteriores</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="proyecto-final-optimizacion-svm">
+<h1><strong>Proyecto Final Optimización: SVM</strong><a class="headerlink" href="#proyecto-final-optimizacion-svm" title="Permalink to this heading">#</a></h1>
+<p>Por: Shadia Jaafar</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduccion">
+<h1>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h1>
+<p>Support Vector Machine (SVM) es un algoritmo de aprendizaje supervisado usado para resolver problemas de clasificación y regresión. El objetivo es encontrar un hiperplano que maximice el margen de separación entre dos clases de datos.</p>
+<p>En este trabajo se abordarán problemas de clasificación binaria usando el conjunto de datos <em>Iris</em> de la librería <em>sklearn</em>, este datset contiene las medidas de longitud y ancho de pétalos y sépalos de tres especies de flores. Además, el proyecto SVM tiene como objetivo analizar los problemas primal y dual de las máquinas de vectores de soporte para el caso separable.</p>
+<p><img alt="svm-all.webp" src="data:image/webp;base64,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" /></p>
+<p>En primer lugar, se resolverán el problema primal y dual para clasificar las especies de flores Setosa y Versicolor. Posteriormente, se repetirán los pasos anteriores para clasificar las especies Versicolor y Virgínica. \</p>
+<p>Para resolver el problema primal usaremos la función <em>Problem</em> de la librería <em>cvxpy</em>.</p>
+<p>Las librerías que se utilizaron para la realización de este trabajo fueron las siguientes:</p>
+<section id="librerias">
+<h2>Librerías<a class="headerlink" href="#librerias" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span><span class="p">,</span> <span class="n">LinearConstraint</span>
+<span class="kn">import</span> <span class="nn">scipy.io</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span><span class="p">,</span> <span class="n">LinearConstraint</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;cvxpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conjunto-de-datos-utilizado">
+<h2>Conjunto de datos utilizado<a class="headerlink" href="#conjunto-de-datos-utilizado" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span> <span class="c1"># Variables explicativas</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span> <span class="c1"># Variable Respuesta</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="desarrollo">
+<h1>Desarrollo<a class="headerlink" href="#desarrollo" title="Permalink to this heading">#</a></h1>
+<p>Iniciemos escribiendo las funciones objetivos a minimizar.</p>
+<section id="problema-primal-de-svm">
+<h2>Problema Primal de SVM<a class="headerlink" href="#problema-primal-de-svm" title="Permalink to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(min_{w, b} \frac{1}{2} |||w||^2\)</span></p>
+<p>Sujeto a: <span class="math notranslate nohighlight">\(y_i(w^Tx_i + b) \geq 1\)</span> <span class="math notranslate nohighlight">\(\forall i = 1, \cdots, n\)</span></p>
+</section>
+<section id="problema-dual-de-svm">
+<h2>Problema Dual de SVM<a class="headerlink" href="#problema-dual-de-svm" title="Permalink to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(\min \frac{1}{2} \alpha^t\hat{p}\alpha - e^t\alpha\)</span></p>
+<p><span class="math notranslate nohighlight">\(p_{ij} = y_iy_jx_i^tx_j\)</span>, <span class="math notranslate nohighlight">\( \quad e = \begin{equation*}
+\begin{pmatrix}
+1\\
+1\\
+\vdots \\
+1
+\end{pmatrix}
+\end{equation*}\)</span>,
+<span class="math notranslate nohighlight">\(\quad y=\begin{equation*}
+\begin{pmatrix}
+y_1\\
+y_2\\
+\vdots \\
+y_n
+\end{pmatrix}
+\end{equation*}\)</span></p>
+</section>
+<section id="caso-separable-clasificacion-setosa-y-versicolor">
+<h2><strong>Caso Separable:</strong> Clasificación Setosa y Versicolor<a class="headerlink" href="#caso-separable-clasificacion-setosa-y-versicolor" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filtrar las clases setosa (0) y versicolor (1)</span>
+<span class="n">X_subset</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">y_subset</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Cambiar las etiquetas a {-1, 1} setosa = -1, versicolor = 1</span>
+<span class="n">y_subset</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y_subset</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="problema-primal">
+<h3>Problema primal<a class="headerlink" href="#problema-primal" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">X_subset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">()</span>
+
+<span class="c1"># Restricciones</span>
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_subset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">X_subset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">@</span> <span class="n">w</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_subset</span><span class="p">))]</span>
+
+<span class="c1"># Función objetivo</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">cp</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Problema de optimización</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
+
+<span class="c1"># Resolver el problema</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="c1"># Obtener los valores óptimos</span>
+<span class="n">w_optimal</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">value</span>
+<span class="n">b_optimal</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vector óptimo (w):&quot;</span><span class="p">,</span> <span class="n">w_optimal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercepto (b):&quot;</span><span class="p">,</span> <span class="n">b_optimal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valor de la función objetivo&quot;</span><span class="p">)</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">cp</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w_optimal</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector óptimo (w): [ 0.04603438 -0.52172249  1.00316436  0.46418056]
+Intercepto (b): -1.4505608374882162
+Valor de la función objetivo
+0.7480579265182639
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aquí podemos observar los coeficientes que describen el hiperplano separador de las dos clases. Además, el valor de la función objetivo cuando se evalúan los valores óptimos.</p>
+</section>
+</section>
+<section id="problema-dual">
+<h2>Problema Dual<a class="headerlink" href="#problema-dual" title="Permalink to this heading">#</a></h2>
+<p>Para hallar la solución del problema dual se requirió del uso de la función <em>quadprog</em> del lenguaje de programación MATLAB. A continuación se presenta el código utilizado y el respectivo output.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Dataset Iris</span>
+<span class="nb">load</span><span class="w"> </span><span class="n">fisheriris</span><span class="p">;</span>
+
+<span class="c">% Convertir a numeros las categorias</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">double</span><span class="p">(</span><span class="nb">categorical</span><span class="p">(</span><span class="n">species</span><span class="p">));</span>
+
+<span class="c">% Seleccionar versicolor y Virginica</span>
+<span class="n">indices</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="n">X_subset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">meas</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span><span class="w"> </span><span class="p">:);</span>
+<span class="n">y_subset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+
+<span class="n">y_subset</span><span class="p">(</span><span class="n">y_subset</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">%versicolor</span>
+<span class="n">y_subset</span><span class="p">(</span><span class="n">y_subset</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">%virginica</span>
+
+<span class="c">%Problema Dual------------------------------------------------------------</span>
+<span class="c">%min 0.5*alpha^t*p*alpha - e*alpha</span>
+<span class="c">%s.a y^t*alpha = 0; alpha&gt;=0</span>
+
+<span class="c">% Matriz pij = y_iy_jx_ix_j</span>
+<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">));</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">)</span>
+<span class="w">        </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_subset</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y_subset</span><span class="p">(</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">X_subset</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="n">X_subset</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="w"> </span><span class="p">:));</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="nb">ones</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c">%-e</span>
+
+<span class="n">Aeq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_subset</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">%y^t</span>
+<span class="n">beq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c">%restricciones de igualdad</span>
+<span class="n">lb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c">%restricciones de desigualdad</span>
+
+<span class="c">% Resolver el problema cuadrático</span>
+<span class="n">options</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">optimoptions</span><span class="p">(</span><span class="s">&#39;quadprog&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Algorithm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;interior-point-convex&#39;</span><span class="p">);</span>
+<span class="n">alpha_optimal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">quadprog</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">Aeq</span><span class="p">,</span><span class="w"> </span><span class="n">beq</span><span class="p">,</span><span class="w"> </span><span class="n">lb</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">options</span><span class="p">);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Resultado de la optimización:\n&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;alpha_optimal = \n&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;%.15f\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="p">);</span>
+
+<span class="c">% Valor de la función objetivo</span>
+<span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="p">;</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Valor de la función objetivo = \n&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;%.15f\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+
+<span class="c">% Encontrar los alphas mayores que 0</span>
+<span class="n">indices_alpha_positivos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">alpha_optimal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Valores de alpha mayores que 0:\n&#39;</span><span class="p">);</span>
+
+<span class="n">alpha_optimos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="p">(</span><span class="n">indices_alpha_positivos</span><span class="p">);</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">alpha_optimos</span><span class="p">);</span>
+
+<span class="c">% Vectores de Soporte-------------------------------------------------</span>
+<span class="n">X_filas_alpha_positivos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">X_subset</span><span class="p">(</span><span class="n">indices_alpha_positivos</span><span class="p">,</span><span class="w"> </span><span class="p">:);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Vectores de Soporte:\n&#39;</span><span class="p">);</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">X_filas_alpha_positivos</span><span class="p">);</span>
+
+<span class="nb">save</span><span class="p">(</span><span class="s">&#39;soluciones_2.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;alpha_optimos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X_filas_alpha_positivos&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span><span class="p">:</span>
+
+<span class="n">alpha_optimos</span> <span class="o">=</span>
+
+    <span class="mf">0.6713</span>
+    <span class="mf">0.0767</span>
+    <span class="mf">0.7481</span>
+
+<span class="n">Vectores</span> <span class="n">de</span> <span class="n">Soporte</span> <span class="o">=</span> \\
+    <span class="mf">5.1000</span>    <span class="mf">3.3000</span>    <span class="mf">1.7000</span>    <span class="mf">0.5000</span> \\
+    <span class="mf">4.5000</span>    <span class="mf">2.3000</span>    <span class="mf">1.3000</span>    <span class="mf">0.3000</span> \\
+    <span class="mf">5.1000</span>    <span class="mf">2.5000</span>    <span class="mf">3.0000</span>    <span class="mf">1.1000</span>
+
+<span class="n">Valor</span> <span class="n">de</span> <span class="n">la</span> <span class="n">función</span> <span class="n">objetivo</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.748058</span>
+</pre></div>
+</div>
+<p>Se hallaron 3 multiplicadores de Lagrange y sus vectores de soporte correspondientes. Por otro lado, el valor de la función primal es aproximadamente igual a menos el valor de la función dual. Esto demustra que hallar la solución del problema dual, es equivalente a hallar la solución del problema primal.</p>
+<p><em>Nota:</em> debido a que los valores obtenidos fueron hallados en MATLAB se recurrió guardar los datos en un archivo y posteriormente cargarlos en Python para implementar los ejercicios siguientes.</p>
+<p>En este código se muestra el proceso de cargue del archivo y la obtención de los datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_data</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;soluciones_1.mat&#39;</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;alpha_optimos&#39;</span><span class="p">]</span>
+<span class="n">vectores</span> <span class="o">=</span> <span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;X_filas_alpha_positivos&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vectores de Soporte&quot;</span><span class="p">,</span> <span class="n">vectores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Multiplicadores de Lagrange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectores de Soporte [[5.1 3.3 1.7 0.5]
+ [4.5 2.3 1.3 0.3]
+ [5.1 2.5 3.  1.1]]
+Multiplicadores de Lagrange [[0.67133404]
+ [0.07672389]
+ [0.74805793]]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="probar-condiciones-de-optimalidad-kkt">
+<h3>Probar Condiciones de Optimalidad KKT<a class="headerlink" href="#probar-condiciones-de-optimalidad-kkt" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condicion</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">for</span> <span class="n">alpha_i</span><span class="p">,</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">vectores</span><span class="p">,</span> <span class="n">y_subset</span><span class="p">):</span>
+    <span class="n">condiciones_kkt</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">alpha_i</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_i</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w_optimal</span><span class="p">,</span> <span class="n">x_i</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_optimal</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">condiciones_kkt</span> <span class="o">&gt;=</span> <span class="mf">1e-5</span><span class="p">:</span>
+        <span class="n">condicion</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">break</span>
+
+<span class="c1"># Print message if all conditions are met</span>
+<span class="k">if</span> <span class="n">condicion</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Todos los vectores satisfacen las condiciones&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No todos los vectores satisfacen las condiciones&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Todos los vectores satisfacen las condiciones
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="error-de-clasificacion">
+<h3>Error de clasificación<a class="headerlink" href="#error-de-clasificacion" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_subset</span><span class="p">,</span> <span class="n">y_subset</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">decision_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">w_optimal</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_optimal</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">decision_values</span><span class="p">)</span>
+
+<span class="n">error_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classification Error Rate: </span><span class="si">{</span><span class="n">error_rate</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classification Error Rate: 0.00%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos observar que cuando los datos son linealmente separables no hay errores de clasificación y hay pocos vectores de soporte. Además, se cumplen las condiciones de optimalidad KKT.</p>
+</section>
+</section>
+<section id="caso-no-separable-clasificacion-versicolor-y-virginica">
+<h2><strong>Caso No Separable:</strong> Clasificación Versicolor y Virgínica<a class="headerlink" href="#caso-no-separable-clasificacion-versicolor-y-virginica" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filtrar las clases versicolor (1) y virginica (2)</span>
+<span class="n">X_subset</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y_subset</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Cambiar las etiquetas a {-1, 1}</span>
+<span class="n">y_subset</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y_subset</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3>Problema Primal<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">X_subset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">()</span>
+
+<span class="c1"># Restricciones</span>
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_subset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">X_subset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">@</span> <span class="n">w</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_subset</span><span class="p">))]</span>
+
+<span class="c1"># Función objetivo</span>
+<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">cp</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Problema de optimización</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
+
+<span class="c1"># Resolver el problema</span>
+<span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="c1"># Obtener los valores óptimos</span>
+<span class="n">w_optimal</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">value</span>
+<span class="n">b_optimal</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vector de pesos óptimo (w):&quot;</span><span class="p">,</span> <span class="n">w_optimal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Término de sesgo óptimo (b):&quot;</span><span class="p">,</span> <span class="n">b_optimal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vector de pesos óptimo (w): [-1.84830903e-07 -1.29943970e-07 -8.31403187e-08  8.32640084e-08]
+Término de sesgo óptimo (b): 3.2808696905290597
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Problema Dual<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Al igual que en el caso anterior, se utilizó la función <em>quadprog</em> de MATLAB para hallar la solución del problema dual. El código utilizado fue el siguiente.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Dataset Iris</span>
+<span class="nb">load</span><span class="w"> </span><span class="n">fisheriris</span><span class="p">;</span>
+
+<span class="c">% Convertir a numeros las categorias</span>
+<span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">double</span><span class="p">(</span><span class="nb">categorical</span><span class="p">(</span><span class="n">species</span><span class="p">));</span>
+
+<span class="c">% Seleccionar versicolor y Virginica</span>
+<span class="n">indices</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="n">X_subset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">meas</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span><span class="w"> </span><span class="p">:);</span>
+<span class="n">y_subset</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+
+<span class="n">y_subset</span><span class="p">(</span><span class="n">y_subset</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">%versicolor</span>
+<span class="n">y_subset</span><span class="p">(</span><span class="n">y_subset</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c">%virginica</span>
+
+<span class="c">%Problema Dual------------------------------------------------------------</span>
+<span class="c">%min 0.5*alpha^t*p*alpha - e*alpha</span>
+<span class="c">%s.a y^t*alpha = 0; alpha&gt;=0</span>
+
+<span class="c">% Matriz pij = y_iy_jx_ix_j</span>
+<span class="n">H</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">));</span>
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">)</span>
+<span class="w">        </span><span class="n">H</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_subset</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y_subset</span><span class="p">(</span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">dot</span><span class="p">(</span><span class="n">X_subset</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="p">:),</span><span class="w"> </span><span class="n">X_subset</span><span class="p">(</span><span class="nb">j</span><span class="p">,</span><span class="w"> </span><span class="p">:));</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="nb">ones</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c">%-e</span>
+
+<span class="n">Aeq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y_subset</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">%y^t</span>
+<span class="n">beq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c">%restricciones de igualdad</span>
+<span class="n">lb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">y_subset</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c">%restricciones de desigualdad</span>
+
+<span class="c">% Resolver el problema cuadrático</span>
+<span class="n">options</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">optimoptions</span><span class="p">(</span><span class="s">&#39;quadprog&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Algorithm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;interior-point-convex&#39;</span><span class="p">);</span>
+<span class="n">alpha_optimal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">quadprog</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">Aeq</span><span class="p">,</span><span class="w"> </span><span class="n">beq</span><span class="p">,</span><span class="w"> </span><span class="n">lb</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">options</span><span class="p">);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Resultado de la optimización:\n&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;alpha_optimal = \n&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;%.15f\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="p">);</span>
+
+<span class="c">% Valor de la función objetivo</span>
+<span class="n">value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="o">&#39;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="p">;</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Valor de la función objetivo = \n&#39;</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;%.15f\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+
+<span class="c">% Encontrar los alphas mayores que 0</span>
+<span class="n">indices_alpha_positivos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">alpha_optimal</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Valores de alpha mayores que 0:\n&#39;</span><span class="p">);</span>
+
+<span class="n">alpha_optimos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">alpha_optimal</span><span class="p">(</span><span class="n">indices_alpha_positivos</span><span class="p">);</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">alpha_optimos</span><span class="p">);</span>
+
+<span class="c">% Vectores de Soporte-------------------------------------------------</span>
+<span class="n">X_filas_alpha_positivos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">X_subset</span><span class="p">(</span><span class="n">indices_alpha_positivos</span><span class="p">,</span><span class="w"> </span><span class="p">:);</span>
+
+<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;Vectores de Soporte:\n&#39;</span><span class="p">);</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">X_filas_alpha_positivos</span><span class="p">);</span>
+
+<span class="nb">save</span><span class="p">(</span><span class="s">&#39;soluciones_2.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;alpha_optimos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;X_filas_alpha_positivos&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_data</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;soluciones_2 .mat&#39;</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;alpha_optimos&#39;</span><span class="p">]</span>
+<span class="n">vectores</span> <span class="o">=</span> <span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;X_filas_alpha_positivos&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">vectores</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[7.  3.2 4.7 1.4]
+ [6.4 3.2 4.5 1.5]
+ [6.9 3.1 4.9 1.5]
+ [5.5 2.3 4.  1.3]
+ [6.5 2.8 4.6 1.5]
+ [5.7 2.8 4.5 1.3]
+ [6.3 3.3 4.7 1.6]
+ [4.9 2.4 3.3 1. ]
+ [6.6 2.9 4.6 1.3]
+ [5.2 2.7 3.9 1.4]
+ [5.  2.  3.5 1. ]
+ [5.9 3.  4.2 1.5]
+ [6.  2.2 4.  1. ]
+ [6.1 2.9 4.7 1.4]
+ [5.6 2.9 3.6 1.3]
+ [6.7 3.1 4.4 1.4]
+ [5.6 3.  4.5 1.5]
+ [5.8 2.7 4.1 1. ]
+ [6.2 2.2 4.5 1.5]
+ [5.6 2.5 3.9 1.1]
+ [5.9 3.2 4.8 1.8]
+ [6.1 2.8 4.  1.3]
+ [6.3 2.5 4.9 1.5]
+ [6.1 2.8 4.7 1.2]
+ [6.4 2.9 4.3 1.3]
+ [6.6 3.  4.4 1.4]
+ [6.8 2.8 4.8 1.4]
+ [6.7 3.  5.  1.7]
+ [6.  2.9 4.5 1.5]
+ [5.7 2.6 3.5 1. ]
+ [5.5 2.4 3.8 1.1]
+ [5.5 2.4 3.7 1. ]
+ [5.8 2.7 3.9 1.2]
+ [6.  2.7 5.1 1.6]
+ [5.4 3.  4.5 1.5]
+ [6.  3.4 4.5 1.6]
+ [6.7 3.1 4.7 1.5]
+ [6.3 2.3 4.4 1.3]
+ [5.6 3.  4.1 1.3]
+ [5.5 2.5 4.  1.3]
+ [5.5 2.6 4.4 1.2]
+ [6.1 3.  4.6 1.4]
+ [5.8 2.6 4.  1.2]
+ [5.  2.3 3.3 1. ]
+ [5.6 2.7 4.2 1.3]
+ [5.7 3.  4.2 1.2]
+ [5.7 2.9 4.2 1.3]
+ [6.2 2.9 4.3 1.3]
+ [5.1 2.5 3.  1.1]
+ [5.7 2.8 4.1 1.3]
+ [6.3 3.3 6.  2.5]
+ [5.8 2.7 5.1 1.9]
+ [7.1 3.  5.9 2.1]
+ [6.3 2.9 5.6 1.8]
+ [6.5 3.  5.8 2.2]
+ [7.6 3.  6.6 2.1]
+ [4.9 2.5 4.5 1.7]
+ [7.3 2.9 6.3 1.8]
+ [6.7 2.5 5.8 1.8]
+ [7.2 3.6 6.1 2.5]
+ [6.5 3.2 5.1 2. ]
+ [6.4 2.7 5.3 1.9]
+ [6.8 3.  5.5 2.1]
+ [5.7 2.5 5.  2. ]
+ [5.8 2.8 5.1 2.4]
+ [6.4 3.2 5.3 2.3]
+ [6.5 3.  5.5 1.8]
+ [7.7 3.8 6.7 2.2]
+ [7.7 2.6 6.9 2.3]
+ [6.  2.2 5.  1.5]
+ [6.9 3.2 5.7 2.3]
+ [5.6 2.8 4.9 2. ]
+ [7.7 2.8 6.7 2. ]
+ [6.3 2.7 4.9 1.8]
+ [6.7 3.3 5.7 2.1]
+ [7.2 3.2 6.  1.8]
+ [6.2 2.8 4.8 1.8]
+ [6.1 3.  4.9 1.8]
+ [6.4 2.8 5.6 2.1]
+ [7.2 3.  5.8 1.6]
+ [7.4 2.8 6.1 1.9]
+ [7.9 3.8 6.4 2. ]
+ [6.4 2.8 5.6 2.2]
+ [6.3 2.8 5.1 1.5]
+ [6.1 2.6 5.6 1.4]
+ [7.7 3.  6.1 2.3]
+ [6.3 3.4 5.6 2.4]
+ [6.4 3.1 5.5 1.8]
+ [6.  3.  4.8 1.8]
+ [6.9 3.1 5.4 2.1]
+ [6.7 3.1 5.6 2.4]
+ [6.9 3.1 5.1 2.3]
+ [5.8 2.7 5.1 1.9]
+ [6.8 3.2 5.9 2.3]
+ [6.7 3.3 5.7 2.5]
+ [6.7 3.  5.2 2.3]
+ [6.3 2.5 5.  1.9]
+ [6.5 3.  5.2 2. ]
+ [6.2 3.4 5.4 2.3]
+ [5.9 3.  5.1 1.8]]
+[[5.84523413e+00]
+ [5.55640145e+00]
+ [1.29701221e+01]
+ [3.75867148e+00]
+ [7.47048292e+00]
+ [1.15524681e+01]
+ [1.33605497e+01]
+ [2.04400073e+00]
+ [5.88151955e+00]
+ [3.60244264e+00]
+ [2.54569655e+00]
+ [4.13136113e+00]
+ [2.91954392e+00]
+ [1.82916283e+01]
+ [2.19760510e+00]
+ [4.12769090e+00]
+ [1.99298353e+01]
+ [3.51490628e+00]
+ [1.42448767e+02]
+ [3.21600899e+00]
+ [1.55670832e+08]
+ [2.93164916e+00]
+ [7.47771862e+07]
+ [1.12967414e+01]
+ [4.12866852e+00]
+ [4.11374233e+00]
+ [1.00868536e+01]
+ [5.97050735e+07]
+ [9.89424787e+00]
+ [2.06195912e+00]
+ [2.95879011e+00]
+ [2.43613576e+00]
+ [2.88186946e+00]
+ [8.99051277e+07]
+ [3.12405226e+01]
+ [8.31035557e+00]
+ [7.62586372e+00]
+ [5.05527396e+00]
+ [4.15643606e+00]
+ [3.55377934e+00]
+ [1.01396233e+01]
+ [1.01942409e+01]
+ [3.41812256e+00]
+ [1.97791574e+00]
+ [5.00235046e+00]
+ [4.93858948e+00]
+ [4.51680712e+00]
+ [4.28317275e+00]
+ [1.73615249e+00]
+ [3.79904228e+00]
+ [3.21143746e+00]
+ [2.66606618e+01]
+ [6.42172935e+00]
+ [6.88670874e+00]
+ [4.68327421e+00]
+ [2.66178116e+00]
+ [2.52162795e+04]
+ [3.22130316e+00]
+ [6.02738628e+00]
+ [4.07258541e+00]
+ [5.74494088e+02]
+ [2.52755485e+01]
+ [1.48862205e+01]
+ [2.36428679e+01]
+ [9.04737470e+00]
+ [1.67948426e+01]
+ [1.48135610e+01]
+ [2.62632918e+00]
+ [3.30908160e+00]
+ [5.91566963e+02]
+ [9.01069373e+00]
+ [5.49747324e+01]
+ [2.50917519e+00]
+ [1.69406208e+04]
+ [7.19956150e+00]
+ [5.14074029e+00]
+ [1.14317361e+07]
+ [1.28958525e+05]
+ [7.81090631e+00]
+ [1.19010401e+01]
+ [4.77376371e+00]
+ [3.57632905e+00]
+ [6.28433901e+00]
+ [1.54608154e+08]
+ [8.76104986e+00]
+ [6.16891862e+00]
+ [6.03293944e+00]
+ [1.27916893e+01]
+ [2.13845644e+08]
+ [3.44197386e+01]
+ [7.52207427e+00]
+ [1.04511863e+02]
+ [2.66606612e+01]
+ [4.73346863e+00]
+ [5.56081928e+00]
+ [3.04048445e+01]
+ [1.25276498e+02]
+ [8.06049504e+01]
+ [1.09412740e+01]
+ [9.08467625e+01]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="probar-condiciones-kkt">
+<h3>Probar condiciones KKT<a class="headerlink" href="#probar-condiciones-kkt" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">condicion</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">for</span> <span class="n">alpha_i</span><span class="p">,</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">vectores</span><span class="p">,</span> <span class="n">y_subset</span><span class="p">):</span>
+    <span class="n">condiciones_kkt</span> <span class="o">=</span> <span class="n">alpha_i</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_i</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w_optimal</span><span class="p">,</span> <span class="n">x_i</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_optimal</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">condiciones_kkt</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1e-5</span><span class="p">:</span>
+        <span class="n">condicion</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">break</span>
+
+<span class="c1"># Print message if all conditions are met</span>
+<span class="k">if</span> <span class="n">condicion</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Todos los vectores satisfacen las condiciones&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No todos los vectores satisfacen las condiciones&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Todos los vectores satisfacen las condiciones
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Error de Clasificación<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_subset</span><span class="p">,</span> <span class="n">y_subset</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">decision_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">w_optimal</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_optimal</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">decision_values</span><span class="p">)</span>
+
+<span class="n">error_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classification Error Rate: </span><span class="si">{</span><span class="n">error_rate</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classification Error Rate: 40.00%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se observa que al ser clases no separables, el error de clasificación es del 40% y hay muchos vectores de soporte.</p>
+</section>
+</section>
+<section id="variables-de-holgura">
+<h2>Variables de Holgura<a class="headerlink" href="#variables-de-holgura" title="Permalink to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(min \frac{1}{2} ||w||^2 + c ∑_{i=1}^n \xi^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(s.a \quad y_i(w^tx_i + b) \geq 1 - \xi_1; \quad \xi_i \geq 0  \quad \forall i = 1, \cdots, n\)</span></p>
+<p>donde <strong>c&gt;0</strong> es el parámetro de penalización.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">holgura</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+  <span class="n">w</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">X_subset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">()</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_subset</span><span class="p">))</span>
+  <span class="c1"># Restricciones</span>
+  <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">y_subset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">X_subset</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">@</span> <span class="n">w</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_subset</span><span class="p">))]</span>
+
+  <span class="c1"># Función objetivo</span>
+  <span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">cp</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">C</span><span class="o">*</span><span class="n">cp</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+  <span class="c1"># Problema de optimización</span>
+  <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
+
+  <span class="c1"># Resolver el problema</span>
+  <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+  <span class="c1"># Obtener los valores óptimos</span>
+  <span class="n">w_optimal</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">value</span>
+  <span class="n">b_optimal</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">value</span>
+  <span class="n">s_optimal</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="k">return</span> <span class="n">w_optimal</span><span class="p">,</span> <span class="n">b_optimal</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span><span class="o">**</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">C</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">clasificacion</span><span class="p">(</span><span class="n">w_optimal</span><span class="p">,</span> <span class="n">b_optimal</span><span class="p">):</span>
+  <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_subset</span><span class="p">,</span> <span class="n">y_subset</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+  <span class="n">decision_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">w_optimal</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_optimal</span>
+  <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">decision_values</span><span class="p">)</span>
+  <span class="n">error_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">error_rate</span>
+
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
+  <span class="n">w</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">holgura</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+  <span class="n">error</span> <span class="o">=</span> <span class="n">clasificacion</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Para C = &quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coeficientes: &quot;</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b: &quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: &quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Para C =  1.0
+Coeficientes:  [2.96288568e-09 1.02927454e-09 7.30370008e-09 4.22609313e-09]
+b:  3.1763478560942735
+Error:  0.4
+Para C =  0.1
+Coeficientes:  [-2.27723814e-08 -8.74860172e-09 -2.74071960e-08 -1.41422856e-08]
+b:  2.9268748683851658
+Error:  0.4
+Para C =  0.01
+Coeficientes:  [-9.21463446e-10  3.82468577e-11 -9.70609704e-09 -6.90829115e-09]
+b:  2.8727395274830383
+Error:  0.4
+Para C =  0.001
+Coeficientes:  [-1.44418972e-09 -4.71241035e-10 -3.72710420e-09 -2.32399532e-09]
+b:  2.8643424376765765
+Error:  0.4
+Para C =  0.0001
+Coeficientes:  [-3.10942834e-09 -1.01808364e-09 -9.77701507e-09 -6.07801140e-09]
+b:  2.8708398512158126
+Error:  0.4
+Para C =  1e-05
+Coeficientes:  [-2.68143654e-08 -9.31882501e-09 -7.37314454e-08 -4.53262731e-08]
+b:  2.8087598315635427
+Error:  0.4
+Para C =  1e-06
+Coeficientes:  [-1.07627256e-07 -3.76714125e-08 -2.99397203e-07 -1.84235622e-07]
+b:  2.8464031178804934
+Error:  0.4
+Para C =  1e-07
+Coeficientes:  [1.83029786e-08 6.48966511e-09 4.89735016e-08 2.99206403e-08]
+b:  2.4185972853716757
+Error:  0.4
+Para C =  1e-08
+Coeficientes:  [-1.14002130e-07 -3.93333933e-08 -3.22124749e-07 -1.98660554e-07]
+b:  2.148547492613536
+Error:  0.4
+Para C =  1e-09
+Coeficientes:  [-1.73805656e-06 -6.05941858e-07 -4.79902205e-06 -2.94794077e-06]
+b:  2.6972026353290968
+Error:  0.4
+Para C =  20
+Coeficientes:  [ 4.70426004e-08 -2.10686392e-07  1.33913672e-06  8.85807827e-07]
+b:  4.578652259742932
+Error:  0.4
+Para C =  100
+Coeficientes:  [-2.32081144e-08 -2.57626180e-09 -1.03063189e-07 -6.33904723e-08]
+b:  6.4729305788316145
+Error:  0.4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se observa que el error de clasificación no mejora cuando se varía el valor de <em>c</em>.</p>
+</section>
+<section id="caso-no-separable">
+<h2>Caso No separable<a class="headerlink" href="#caso-no-separable" title="Permalink to this heading">#</a></h2>
+<p><strong>Problema Primal</strong></p>
+<p><span class="math notranslate nohighlight">\(min \frac{1}{2} ||w||^2 + c ∑_{i=1}^n \xi^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(s.a \quad y_i(w \phi (x_i) + b) \geq 1 - \xi_1; \quad \xi_i \geq 0  \quad \forall i = 1, \cdots, n\)</span></p>
+</section>
+<section id="conclusiones-de-los-experimentos-anteriores">
+<h2>Conclusiones de los experimentos anteriores<a class="headerlink" href="#conclusiones-de-los-experimentos-anteriores" title="Permalink to this heading">#</a></h2>
+<p>De acuerdo con observado en los experimentos anteriores se puede concluir que:</p>
+<ul class="simple">
+<li><p>Cuando los clases son linealmente separables se observaron pocos vectores de soporte. En cambio, para clases no separables el número de vectores de soporte era mucho más grande.</p></li>
+<li><p>Se observó que para las clases separables los valores del vector <em>w</em> eran mayores que 0, lo cual indicaba un espacio de separabilidad entre los márgenes. Sin embargo, para clases no separables los coeficientes de <em>w</em> son muy cercanos a 0, esto sugiere que no hay espacio entre los márgenes.</p></li>
+<li><p>Para clases separables el error de clasificación es nulo, sin embargo, para las no separables es del 40%.</p></li>
+<li><p>Al variar el <em>c</em> se observó que no cambió el error de clasificación puesto que se usaba el kernel lineal. Sin embargo, los coeficientes de <em>w</em> si varíaban. Se sugiere introducir kernels para mejorar la clasificación.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="introduc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introducción</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="op2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Proyecto Final Optimización: SVM</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#librerias">Librerías</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conjunto-de-datos-utilizado">Conjunto de datos utilizado</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#desarrollo">Desarrollo</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-primal-de-svm">Problema Primal de SVM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-dual-de-svm">Problema Dual de SVM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-separable-clasificacion-setosa-y-versicolor"><strong>Caso Separable:</strong> Clasificación Setosa y Versicolor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-primal">Problema primal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema-dual">Problema Dual</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probar-condiciones-de-optimalidad-kkt">Probar Condiciones de Optimalidad KKT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-de-clasificacion">Error de clasificación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-no-separable-clasificacion-versicolor-y-virginica"><strong>Caso No Separable:</strong> Clasificación Versicolor y Virgínica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Problema Primal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Problema Dual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probar-condiciones-kkt">Probar condiciones KKT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Error de Clasificación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-de-holgura">Variables de Holgura</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-no-separable">Caso No separable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-de-los-experimentos-anteriores">Conclusiones de los experimentos anteriores</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

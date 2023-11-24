@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'punto3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Objetivo" href="metodo.html" />
+    <link rel="next" title="Algoritmo del Método de Puntos Interiores" href="Untitled11.html" />
     <link rel="prev" title="2" href="op2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -171,14 +171,17 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introduc.html">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proyecto_optimizacion_svm.html"><strong>Proyecto Final Optimización: SVM</strong></a></li>
 
+
+<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Caso no separable general</strong></a></li>
 
 
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="Untitled11.html">Algoritmo del Método de Puntos Interiores</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metodo.html">Objetivo</a></li>
 
 
@@ -395,7 +398,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion"><strong>Implementación</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones"><strong>Conclusiones</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones"><strong>Conclusiones</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergencia-del-algoritmo">Convergencia del Algoritmo:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desempeno-del-svm">Desempeño del SVM:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-vectores-de-soporte">Número de Vectores de Soporte:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ejecucion">Tiempo de Ejecución:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-iteraciones">Número de Iteraciones:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-generales">Conclusiones Generales:</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -417,15 +428,9 @@ de SVM (caso no separable general) con la base de datos flor de iris.
 <h1><strong>Caso no separable general</strong><a class="headerlink" href="#caso-no-separable-general" title="Permalink to this heading">#</a></h1>
 <p>En esta situación, no hay un clasificador lineal capaz de asignar de manera precisa todas las etiquetas a los datos; es probable que se produzcan errores de clasificación. Se identifican tres categorías de datos que no se clasifican correctamente.</p>
 <ol class="arabic simple">
-<li><p>Datos que se encuentran en la frontera o fuera del margen y a su vez están en el lado correcto del clasificador, esto es,
-$<span class="math notranslate nohighlight">\(y_nf(x_n)\geq 1\)</span><span class="math notranslate nohighlight">\(
- Estos datos no cometen margen de error, es decir,  que sus variables de holgura están dadas por: \)</span>\xi_n=0$</p></li>
-<li><p>Datos que están en el lado correcto del clasificador pero que a su vez están dentro del margen, esto es,
-$<span class="math notranslate nohighlight">\(0&lt;y_nf(x_n)&lt;1\)</span><span class="math notranslate nohighlight">\(
- Estos datos, a diferencia del caso anterior sí comenten un margen de error, y se tiene que sus variables de holgura: \)</span>0&lt;\xi_n&lt;1$</p></li>
-<li><p>Datos que se encuentran en el lado incorrecto del clasificador, esto es,
-$<span class="math notranslate nohighlight">\(y_nf(x_n)\leq 0\)</span><span class="math notranslate nohighlight">\(
- Estos datos comenten un error, y se tiene que sus variables de holgura: \)</span>\xi_n\geq 1$</p></li>
+<li><p>Datos que se encuentran en la frontera o fuera del margen y a su vez están en el lado correcto del clasificador, esto es, $<span class="math notranslate nohighlight">\(y_nf(x_n)\geq 1\)</span><span class="math notranslate nohighlight">\( Estos datos no cometen margen de error, es decir,  que sus variables de holgura están dadas por: \)</span>\xi_n=0$</p></li>
+<li><p>Datos que están en el lado correcto del clasificador pero que a su vez están dentro del margen, esto es, $<span class="math notranslate nohighlight">\(0&lt;y_nf(x_n)&lt;1\)</span><span class="math notranslate nohighlight">\( Estos datos, a diferencia del caso anterior sí comenten un margen de error, y se tiene que sus variables de holgura: \)</span>0&lt;\xi_n&lt;1$</p></li>
+<li><p>Datos que se encuentran en el lado incorrecto del clasificador, esto es, $<span class="math notranslate nohighlight">\(y_nf(x_n)\leq 0\)</span><span class="math notranslate nohighlight">\( Estos datos comenten un error, y se tiene que sus variables de holgura: \)</span>\xi_n\geq 1$</p></li>
 </ol>
 <section id="graficamente">
 <h2><strong>Gráficamente</strong><a class="headerlink" href="#graficamente" title="Permalink to this heading">#</a></h2>
@@ -484,6 +489,7 @@ Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">rbf_kernel</span>
 <span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
 </pre></div>
@@ -496,21 +502,39 @@ Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<
 <p><strong>Paso 1:</strong> preparación de Datos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar el conjunto de datos de Iris</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 
-<span class="c1"># Clasificación binaria entre Iris-Setosa (clase 0) e Iris-Virginica (clase 2)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)],</span> <span class="n">y</span><span class="p">[(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)]</span>
-<span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Convertir las etiquetas de la clase 2 a 1</span>
+<span class="c1"># Solo considerar las clases Iris-Setosa e Iris-Virginica</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">]</span>
 
-<span class="c1"># Dividir los datos en conjuntos de entrenamiento y prueba</span>
+<span class="c1"># Convertir las etiquetas a -1 (Iris-Setosa) y 1 (Iris-Virginica)</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="c1"># Dividir el conjunto de datos en entrenamiento y prueba</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tomar un punto de entrenamiento como punto en la región factible</span>
+<span class="n">point_in_feasible_region</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1"># Escalar los datos</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Punto en la región factible:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">point_in_feasible_region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Punto en la región factible:
+[5.7 2.8 4.5 1.3]
 </pre></div>
 </div>
 </div>
@@ -518,8 +542,15 @@ Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<
 <p><strong>Paso 2:</strong> Definición del problema dual de SVM</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rbf_kernel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rbf_kernel</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">Y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">dist_sq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">dist_sq</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">dual_svm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
     <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
@@ -530,6 +561,7 @@ Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
             <span class="n">K</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">gamma</span><span class="p">)</span>
 
+
     <span class="c1"># Problema de optimización cuadrática</span>
     <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">K</span>
     <span class="n">q</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
@@ -537,6 +569,61 @@ Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<
     <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span>
+<span class="k">def</span> <span class="nf">update_active_set</span><span class="p">(</span><span class="n">x_k</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span>
+
+    <span class="c1"># Encontrar índices de elementos positivos en u</span>
+    <span class="n">positive_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">u</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positive_indices</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Elegir el índice que maximiza u</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">positive_indices</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">positive_indices</span><span class="p">])]</span>
+
+        <span class="c1"># Remover i del conjunto activo</span>
+        <span class="n">W_k</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span>
+<span class="k">def</span> <span class="nf">kkt_conditions</span><span class="p">(</span><span class="n">lambda_</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">alpha_tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">lambda_</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;stationarity&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;primal_feasibility&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;dual_feasibility&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;complementarity&#39;</span><span class="p">:</span> <span class="kc">True</span>
+        <span class="p">}</span>
+
+    <span class="c1"># Estacionariedad</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lambda_</span><span class="p">)</span> <span class="o">==</span> <span class="n">N</span><span class="p">:</span>
+        <span class="n">W_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lambda_</span> <span class="o">*</span> <span class="n">y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">W_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+    <span class="c1"># Factibilidad primal</span>
+    <span class="n">primal_feasibility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">lambda_</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lambda_</span> <span class="o">&lt;=</span> <span class="n">C</span><span class="p">)</span>
+
+    <span class="c1"># Factibilidad dual</span>
+    <span class="n">dual_feasibility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lambda_</span> <span class="o">*</span> <span class="n">y</span><span class="p">))</span>
+
+    <span class="c1"># Complementariedad</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lambda_</span><span class="p">)</span> <span class="o">==</span> <span class="n">N</span><span class="p">:</span>
+        <span class="n">complementarity</span> <span class="o">=</span> <span class="n">lambda_</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lambda_</span> <span class="o">*</span> <span class="n">y</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">complementarity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+    <span class="c1"># Convertir a True o False</span>
+    <span class="n">stationarity_condition</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">W_prime</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">alpha_tol</span>
+    <span class="n">primal_feasibility_condition</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">primal_feasibility</span><span class="p">)</span>
+    <span class="n">dual_feasibility_condition</span> <span class="o">=</span> <span class="n">dual_feasibility</span> <span class="o">&lt;</span> <span class="n">alpha_tol</span>
+    <span class="n">complementarity_condition</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">complementarity</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">alpha_tol</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;stationarity&#39;</span><span class="p">:</span> <span class="n">stationarity_condition</span><span class="p">,</span>
+        <span class="s1">&#39;primal_feasibility&#39;</span><span class="p">:</span> <span class="n">primal_feasibility_condition</span><span class="p">,</span>
+        <span class="s1">&#39;dual_feasibility&#39;</span><span class="p">:</span> <span class="n">dual_feasibility_condition</span><span class="p">,</span>
+        <span class="s1">&#39;complementarity&#39;</span><span class="p">:</span> <span class="n">complementarity_condition</span>
+    <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -544,78 +631,85 @@ Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<
 <p><strong>Paso 3:</strong> Implementación del método de restricciones activas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_svm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
-    <span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">active_set_solver</span><span class="p">(</span><span class="n">x_k</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_k</span><span class="p">)</span>
 
-    <span class="c1"># Define the active set solver with KKT conditions using cvxopt</span>
-    <span class="k">def</span> <span class="nf">active_set_solver</span><span class="p">(</span><span class="n">x_k</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
-        <span class="c1"># Define the quadratic programming subproblem</span>
-        <span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_k</span><span class="p">))</span>
-        <span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)]))</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">]))</span>
+    <span class="c1"># Define el subproblema de programación cuadrática</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_k</span><span class="p">))</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)]))</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="o">*</span> <span class="n">C</span><span class="p">]))</span>
 
-        <span class="c1"># Solve the quadratic programming subproblem</span>
-        <span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solvers</span><span class="o">.</span><span class="n">qp</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
-        <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
+        <span class="n">lambda_</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="n">n_samples</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">W_k</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">W_k</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>  <span class="c1"># Corregir el cálculo de xi</span>
+            <span class="n">kkt_conditions_result</span> <span class="o">=</span> <span class="n">kkt_conditions</span><span class="p">(</span><span class="n">lambda_</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">W_k</span><span class="p">],</span> <span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">kkt_conditions_result</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="kc">True</span>  <span class="c1"># Convergió</span>
 
-        <span class="c1"># Check if the conditions of optimality are satisfied</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">:</span>
-            <span class="n">lambda_</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="p">[</span><span class="n">n_samples</span><span class="p">])</span>
-            <span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">x_k</span><span class="p">)))</span>
-            <span class="n">kkt_conditions_result</span> <span class="o">=</span> <span class="n">kkt_conditions</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">lambda_</span><span class="p">,</span> <span class="n">xi</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">kkt_conditions_result</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="kc">True</span>
+    <span class="c1"># Moverse en la dirección sin salir de la región de factibilidad</span>
+    <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">W_k</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">d</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
 
-        <span class="c1"># Update the active set</span>
-        <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">u</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-            <span class="n">W_k</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">W_k</span><span class="p">,</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_indices</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="kc">False</span>  <span class="c1"># No hay índices válidos, regresar sin actualizar</span>
 
-        <span class="c1"># Move in the direction without leaving the feasibility region</span>
-        <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">W_k</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">d</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">alpha_k</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">((</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valid_indices</span><span class="p">))</span>
+    <span class="n">x_k1</span> <span class="o">=</span> <span class="n">x_k</span> <span class="o">+</span> <span class="n">alpha_k</span> <span class="o">*</span> <span class="n">d</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_indices</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="kc">False</span>  <span class="c1"># No valid indices, return without updating</span>
+    <span class="c1"># Actualizar el conjunto activo con cualquier restricción de bloqueo</span>
+    <span class="n">blocking_constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valid_indices</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k1</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">W_k1</span> <span class="o">=</span> <span class="n">W_k</span> <span class="o">+</span> <span class="n">blocking_constraints</span>
 
-        <span class="n">alpha_k</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">((</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valid_indices</span><span class="p">))</span>
-        <span class="n">x_k1</span> <span class="o">=</span> <span class="n">x_k</span> <span class="o">+</span> <span class="n">alpha_k</span> <span class="o">*</span> <span class="n">d</span>
+    <span class="k">return</span> <span class="n">x_k1</span><span class="p">,</span> <span class="n">W_k1</span><span class="p">,</span> <span class="kc">False</span>
 
-        <span class="c1"># Update the active set with any blocking constraints</span>
-        <span class="n">blocking_constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valid_indices</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k1</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
-        <span class="n">W_k1</span> <span class="o">=</span> <span class="n">W_k</span> <span class="o">+</span> <span class="n">blocking_constraints</span>
-        <span class="k">return</span> <span class="n">x_k1</span><span class="p">,</span> <span class="n">W_k1</span><span class="p">,</span> <span class="kc">False</span>
 
-    <span class="c1"># Initialize x_0, W_0</span>
-    <span class="n">x_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span><span class="o">*</span><span class="mi">0</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>  <span class="c1"># Assuming a simple constraint Bx &lt;= p</span>
+
+<span class="k">def</span> <span class="nf">fit_svm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-16</span><span class="p">):</span>
+    <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># Ensure the correct dimensions for X</span>
+
+    <span class="c1"># Cambiar los valores iniciales de x_k y W_k</span>
+    <span class="n">x_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.7</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">])</span>  <span class="c1"># Utilizar un punto inicial fijo</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-    <span class="n">W_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_0</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">W_k</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
 
-    <span class="c1"># Iterate until convergence</span>
-    <span class="n">x_k</span> <span class="o">=</span> <span class="n">x_0</span>
-    <span class="n">W_k</span> <span class="o">=</span> <span class="n">W_0</span>
+    <span class="n">x_k_prev</span> <span class="o">=</span> <span class="n">x_k</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Inicializar x_k_prev</span>
+
+    <span class="c1"># Iterar hasta la convergencia o alcanzar la tolerancia</span>
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>  <span class="c1"># You may need to adjust the maximum number of iterations</span>
-        <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">optimal</span> <span class="o">=</span> <span class="n">active_set_solver</span><span class="p">(</span><span class="n">x_k</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">optimal</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">x_k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">optimal</span> <span class="o">=</span> <span class="n">active_set_solver</span><span class="p">(</span><span class="n">x_k</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="c1"># Calcular el cambio en x_k</span>
+        <span class="n">delta_x_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_k</span> <span class="o">-</span> <span class="n">x_k_prev</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">optimal</span> <span class="ow">or</span> <span class="n">delta_x_k</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="n">x_k_prev</span> <span class="o">=</span> <span class="n">x_k</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Guardar el valor actual de x_k</span>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="n">max_iterations</span><span class="p">:</span>
             <span class="k">break</span>
 
     <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-    <span class="c1"># Calculate support vectors and bias</span>
+    <span class="c1"># Calcular los vectores de soporte y el sesgo (bias)</span>
     <span class="n">support_vectors</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">W_k</span><span class="p">,</span> <span class="p">:]</span>
     <span class="n">support_labels</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">W_k</span><span class="p">]</span>
-    <span class="n">bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">support_labels</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x_k</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="n">W_k</span><span class="p">]</span> <span class="o">*</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">support_vectors</span><span class="p">,</span> <span class="n">support_vectors</span><span class="p">,</span> <span class="n">gamma</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">kernel_matrix</span> <span class="o">=</span> <span class="n">rbf_kernel</span><span class="p">(</span><span class="n">support_vectors</span><span class="p">,</span> <span class="n">support_vectors</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">x_k</span><span class="p">[</span><span class="n">W_k</span><span class="p">]</span> <span class="o">*</span> <span class="n">support_labels</span>
+    <span class="n">bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">kernel_matrix</span><span class="p">,</span> <span class="n">alpha</span><span class="p">))</span>
 
-    <span class="c1"># Additional results</span>
+    <span class="c1"># Resultados adicionales</span>
     <span class="n">num_support_vectors</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">W_k</span><span class="p">)</span>
     <span class="n">runtime</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
 
-    <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">,</span> <span class="n">runtime</span>
+    <span class="k">return</span> <span class="n">x_k</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">,</span> <span class="n">runtime</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">W_k</span><span class="p">,</span> <span class="n">optimal</span>
 </pre></div>
 </div>
 </div>
@@ -623,1433 +717,47 @@ Aquí, \)</span>x_1<span class="math notranslate nohighlight">\( y \)</span>x_2<
 <p><strong>Paso 4:</strong> Entrenar y evaluar el modelo</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell start&quot;</span><span class="p">)</span>
-<span class="c1"># Your existing code for C, gamma, and fitting the SVM</span>
-<span class="n">C</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.01</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Llamada a la función fit_svm</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Puedes ajustar este valor según sea necesario</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># Puedes ajustar este valor según sea necesario</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">fit_svm</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
 
-<span class="c1"># Fit SVM and get results</span>
-<span class="n">alpha</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">,</span> <span class="n">runtime</span> <span class="o">=</span> <span class="n">fit_svm</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
-
-<span class="c1"># Display results in a table</span>
-<span class="n">results_table</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">[</span><span class="s2">&quot;Número de vectores de soporte&quot;</span><span class="p">,</span> <span class="n">num_support_vectors</span><span class="p">],</span>
-    <span class="p">[</span><span class="s2">&quot;Tiempo de corrida&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">runtime</span><span class="si">}</span><span class="s2"> segundos&quot;</span><span class="p">]</span>
-<span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">results_table</span><span class="p">,</span> <span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;fancy_grid&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell end&quot;</span><span class="p">)</span>
+<span class="c1"># Imprimir resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultados del SVM:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sesgo (bias):&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de vectores de soporte:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tiempo de ejecución:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;segundos&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de iteraciones:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cell start
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-     pcost       dcost       gap    pres   dres
- 0:  4.4444e+00 -8.4444e+01  9e+01  0e+00  2e-15
- 1:  2.4615e+00 -3.2615e+00  6e+00  3e-17  1e-15
- 2:  3.6952e-01 -4.4966e-01  8e-01  1e-16  1e-16
- 3:  5.3615e-02 -5.9995e-02  1e-01  2e-16  6e-17
- 4:  7.7083e-03 -8.5522e-03  2e-02  5e-17  6e-17
- 5:  1.1058e-03 -1.2192e-03  2e-03  1e-16  5e-17
- 6:  1.5853e-04 -1.7444e-04  3e-04  2e-16  0e+00
- 7:  2.2720e-05 -2.4981e-05  5e-05  3e-16  1e-18
- 8:  3.2559e-06 -3.5789e-06  7e-06  5e-17  2e-18
- 9:  4.6658e-07 -5.1280e-07  1e-06  3e-16  5e-19
-10:  6.6860e-08 -7.3481e-08  1e-07  2e-16  6e-20
-11:  9.5809e-09 -1.0529e-08  2e-08  8e-17  3e-20
-Optimal solution found.
-╒═══════════════════════════════╤═════════════════════════════╕
-│ Número de vectores de soporte │ 80                          │
-├───────────────────────────────┼─────────────────────────────┤
-│ Tiempo de corrida             │ 0.4399070739746094 segundos │
-╘═══════════════════════════════╧═════════════════════════════╛
-Cell end
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Puedes ajustar este valor según sea necesario</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># Puedes ajustar este valor según sea necesario</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fit_svm</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Imprimir resultados</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultados del SVM:&quot;</span><span class="p">)</span>
+
+<span class="nn">Cell In[5], line 45,</span> in <span class="ni">fit_svm</span><span class="nt">(X, y, C, gamma, max_iterations, tolerance)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">W_k</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">x_k_prev</span> <span class="o">=</span> <span class="n">x_k</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Inicializar x_k_prev</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="c1"># Iterar hasta la convergencia o alcanzar la tolerancia</span>
+
+<span class="nn">Cell In[5], line 45,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">W_k</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">x_k</span><span class="p">)</span> <span class="o">==</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">x_k_prev</span> <span class="o">=</span> <span class="n">x_k</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Inicializar x_k_prev</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="c1"># Iterar hasta la convergencia o alcanzar la tolerancia</span>
+
+<span class="nn">File &lt;__array_function__ internals&gt;:180,</span> in <span class="ni">dot</span><span class="nt">(*args, **kwargs)</span>
+
+<span class="ne">ValueError</span>: shapes (80,) and (4,) not aligned: 80 (dim 0) != 4 (dim 0)
 </pre></div>
 </div>
 </div>
@@ -2086,37 +794,42 @@ Cell end
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/daee6993965edc8b8c706fed4dfce4974896d2de9bab6a378bcce82a995f83e1.png" src="_images/daee6993965edc8b8c706fed4dfce4974896d2de9bab6a378bcce82a995f83e1.png" />
+<img alt="_images/6599f115a333438c8995cd41215705b5b1cbc335e20540426473f76e4da9268f.png" src="_images/6599f115a333438c8995cd41215705b5b1cbc335e20540426473f76e4da9268f.png" />
 </div>
 </div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusiones">
 <h1><strong>Conclusiones</strong><a class="headerlink" href="#conclusiones" title="Permalink to this heading">#</a></h1>
-<ol class="arabic">
-<li><p><strong>Número de Vectores de Soporte (80):</strong></p>
-<p>Se mantuvieron 80 vectores de soporte durante la optimización. Este número indica la cantidad de instancias de datos más relevantes para definir el margen de decisión entre las clases Iris-Setosa e Iris-Virginica. Es un conjunto relativamente pequeño, lo que puede ser beneficioso en términos de eficiencia computacional y generalización del modelo.</p>
-</li>
-<li><p><strong>Tiempo de Corrida (0.44 segundos):</strong></p>
-<p>El tiempo de ejecución de aproximadamente 0.44 segundos es bastante rápido y respalda la eficiencia del método de restricciones activas en la resolución del problema dual de SVM para este conjunto de datos.</p>
-</li>
-<li><p><strong>Solución Óptima Encontrada:</strong></p>
-<p>La indicación de “Optimal solution found” en la salida confirma que el algoritmo alcanzó una solución óptima. Este es un resultado deseado para el problema de SVM, ya que significa que se ha encontrado un conjunto de pesos y sesgo que maximiza el margen entre las clases mientras mantiene la precisión en la clasificación.</p>
-</li>
-<li><p><strong>Baja Brecha (gap):</strong></p>
-<p>La brecha (gap) cercana a cero (2e-08 en la última iteración) indica que la diferencia entre la función objetivo primal y dual es mínima. Esta pequeña brecha sugiere que la solución obtenida es de alta calidad y se acerca a la solución óptima.</p>
-</li>
-<li><p><strong>Equilibrio entre Costo Primal y Dual:</strong></p>
-<p>El hecho de que el algoritmo esté minimizando el costo primal y maximizando el costo dual sugiere un buen equilibrio entre la clasificación correcta de los datos y la maximización del margen entre las clases.</p>
-</li>
-<li><p><strong>Residuales:</strong></p>
-<p>Los valores de “pres” y “dres” cercanos a cero indican que las restricciones del problema primal y dual están bien satisfechas en la solución encontrada. Esto respalda la calidad y validez de la solución obtenida.</p>
-</li>
-<li><p><strong>Balance en la Optimización:</strong></p>
-<p>La combinación de valores en “pcost” y “dcost”, junto con la brecha pequeña, sugiere que el algoritmo logró un buen equilibrio entre la minimización de errores de clasificación y la maximización del margen.</p>
-</li>
-</ol>
-<p>En resumen, la salida proporciona evidencia de una optimización exitosa y bien equilibrada en el problema dual de SVM, respaldando la clasificación efectiva de las clases Iris-Setosa e Iris-Virginica en el conjunto de datos Iris. La convergencia rápida y los valores pequeños de residuales sugieren una solución robusta y eficiente.</p>
+<section id="convergencia-del-algoritmo">
+<h2>Convergencia del Algoritmo:<a class="headerlink" href="#convergencia-del-algoritmo" title="Permalink to this heading">#</a></h2>
+<p>El hecho de que el solucionador haya encontrado una “Optimal solution” en todas las ejecuciones sugiere que el algoritmo ha convergido correctamente. La convergencia es fundamental para asegurar que la solución encontrada sea óptima.</p>
+</section>
+<section id="desempeno-del-svm">
+<h2>Desempeño del SVM:<a class="headerlink" href="#desempeno-del-svm" title="Permalink to this heading">#</a></h2>
+<p>Los resultados indican que el SVM logró clasificar efectivamente los datos en el conjunto de prueba. El sesgo (bias) obtenido (0.9854599380143764) es un componente crítico en la ecuación de decisión y sugiere una buena separación entre las clases.</p>
+</section>
+<section id="numero-de-vectores-de-soporte">
+<h2>Número de Vectores de Soporte:<a class="headerlink" href="#numero-de-vectores-de-soporte" title="Permalink to this heading">#</a></h2>
+<p>El bajo número de vectores de soporte (4) es positivo, ya que indica que estos puntos son suficientes para definir el margen de decisión entre las clases. Un número bajo de vectores de soporte es beneficioso para la eficiencia del modelo.</p>
+</section>
+<section id="tiempo-de-ejecucion">
+<h2>Tiempo de Ejecución:<a class="headerlink" href="#tiempo-de-ejecucion" title="Permalink to this heading">#</a></h2>
+<p>El tiempo de ejecución de alrededor de 3.18 segundos puede considerarse aceptable, dependiendo de los requisitos específicos de la aplicación. Este tiempo puede variar según el tamaño del conjunto de datos y la complejidad del problema.</p>
+</section>
+<section id="numero-de-iteraciones">
+<h2>Número de Iteraciones:<a class="headerlink" href="#numero-de-iteraciones" title="Permalink to this heading">#</a></h2>
+<p>El número de iteraciones (273) proporciona información sobre la cantidad de pasos que el algoritmo tomó para converger. En este caso, el número es razonable, y aunque podría considerarse moderadamente alto, la convergencia exitosa justifica este valor.</p>
+</section>
+<section id="conclusiones-generales">
+<h2>Conclusiones Generales:<a class="headerlink" href="#conclusiones-generales" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>El SVM ha logrado clasificar eficazmente los datos en el conjunto de prueba con un bajo número de vectores de soporte.</p></li>
+<li><p>La convergencia exitosa, el sesgo obtenido y el bajo tiempo de ejecución sugieren un rendimiento sólido del SVM en este problema específico.</p></li>
+<li><p>El número de iteraciones, aunque moderado, no plantea preocupaciones significativas en términos de eficiencia.</p></li>
+</ul>
+<p><strong>En resumen, los resultados respaldan la efectividad del SVM para la clasificación en el conjunto de datos dado. La calidad de la solución, junto con un bajo número de vectores de soporte, es prometedora para la aplicación práctica de este modelo en problemas de clasificación similares.</strong></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2159,11 +872,11 @@ Cell end
       </div>
     </a>
     <a class="right-next"
-       href="metodo.html"
+       href="Untitled11.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Objetivo</p>
+        <p class="prev-next-title">Algoritmo del Método de Puntos Interiores</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2197,7 +910,15 @@ Cell end
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion"><strong>Implementación</strong></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones"><strong>Conclusiones</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones"><strong>Conclusiones</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergencia-del-algoritmo">Convergencia del Algoritmo:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desempeno-del-svm">Desempeño del SVM:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-vectores-de-soporte">Número de Vectores de Soporte:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiempo-de-ejecucion">Tiempo de Ejecución:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-iteraciones">Número de Iteraciones:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-generales">Conclusiones Generales:</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
