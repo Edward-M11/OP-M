@@ -1,14 +1,14 @@
 # Informe Proyecto Final Optimizacion Matematica
 
-by
+hecho por
 
 - Edward Morales
 - Mariana Castañeda
-- Shadia Jaffar
+- Shadia Jaafar
 - Sara Niebles
 - Kevin Jaimes
 
-Aqui ta todo.
+Contenido.
 
 ```{tableofcontents}
 ```

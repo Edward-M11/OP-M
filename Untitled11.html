@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Algoritmo del Método de Puntos Interiores &#8212; My sample book</title>
+    <title>Punto 4 &#8212; My sample book</title>
   
   
   
@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Untitled11';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Objetivo" href="metodo.html" />
-    <link rel="prev" title="Caso no separable general" href="punto3.html" />
+    <link rel="next" title="Punto 5" href="metodo.html" />
+    <link rel="prev" title="Punto 3" href="punto3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,18 +171,20 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="introduc.html">Introducción</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proyecto_optimizacion_svm.html"><strong>Proyecto Final Optimización: SVM</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="proyecto_optimizacion_svm.html"><strong>Punto 1</strong></a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="op2.html">2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="punto3.html"><strong>Caso no separable general</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="op2.html"><strong>Punto 2</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="punto3.html"><strong>Punto 3</strong></a></li>
 
 
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algoritmo del Método de Puntos Interiores</a></li>
-<li class="toctree-l1"><a class="reference internal" href="metodo.html">Objetivo</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Punto 4</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="metodo.html"><strong>Punto 5</strong></a></li>
+
 
 
 
@@ -373,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Algoritmo del Método de Puntos Interiores</h1>
+    <h1>Punto 4</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -383,11 +385,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-inicializacion">Paso 1: Inicialización</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-solucion-de-subproblemas">Paso 2: Solución de Subproblemas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-actualizacion-del-parametro-de-barrera">Paso 3: Actualización del Parámetro de Barrera</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-condiciones-de-terminacion">Paso 4: Condiciones de Terminación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-extraccion-de-la-solucion">Paso 5: Extracción de la Solución</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-del-metodo-de-puntos-interiores">Algoritmo del Método de Puntos Interiores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-inicializacion">Paso 1: Inicialización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-solucion-de-subproblemas">Paso 2: Solución de Subproblemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-actualizacion-del-parametro-de-barrera">Paso 3: Actualización del Parámetro de Barrera</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-condiciones-de-terminacion">Paso 4: Condiciones de Terminación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-extraccion-de-la-solucion">Paso 5: Extracción de la Solución</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -399,7 +404,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="punto-4">
+<h1><strong>Punto 4</strong><a class="headerlink" href="#punto-4" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -543,13 +550,13 @@ Vectores de soporte:
 <p><strong>pres</strong>: La “presión” primal o presión residual primal. Es una medida de cuán bien se están cumpliendo las restricciones del problema primal. Una presión pequeña significa que las restricciones se están satisfaciendo bien.</p>
 <p><strong>dres</strong>: La presión residual dual. Similar a la presión primal, pero para el problema dual. También es una medida de la satisfacción de las restricciones, pero en el espacio dual.</p>
 <section id="algoritmo-del-metodo-de-puntos-interiores">
-<h1>Algoritmo del Método de Puntos Interiores<a class="headerlink" href="#algoritmo-del-metodo-de-puntos-interiores" title="Permalink to this heading">#</a></h1>
+<h2>Algoritmo del Método de Puntos Interiores<a class="headerlink" href="#algoritmo-del-metodo-de-puntos-interiores" title="Permalink to this heading">#</a></h2>
 <section id="paso-1-inicializacion">
-<h2>Paso 1: Inicialización<a class="headerlink" href="#paso-1-inicializacion" title="Permalink to this heading">#</a></h2>
+<h3>Paso 1: Inicialización<a class="headerlink" href="#paso-1-inicializacion" title="Permalink to this heading">#</a></h3>
 <p>Se selecciona un punto inicial  <span class="math notranslate nohighlight">\(x_0\)</span> en el interior del conjunto factible y se establece un parámetro de barrera inicial  μ .</p>
 </section>
 <section id="paso-2-solucion-de-subproblemas">
-<h2>Paso 2: Solución de Subproblemas<a class="headerlink" href="#paso-2-solucion-de-subproblemas" title="Permalink to this heading">#</a></h2>
+<h3>Paso 2: Solución de Subproblemas<a class="headerlink" href="#paso-2-solucion-de-subproblemas" title="Permalink to this heading">#</a></h3>
 <p>En cada iteración ( k ), se resuelve el siguiente subproblema cuadrático:</p>
 <p>[
 \begin{aligned}
@@ -559,16 +566,17 @@ Vectores de soporte:
 <p>donde <span class="math notranslate nohighlight">\(μ_k\)</span> es el valor actual del parámetro de barrera. Este subproblema se resuelve típicamente mediante métodos de Newton.</p>
 </section>
 <section id="paso-3-actualizacion-del-parametro-de-barrera">
-<h2>Paso 3: Actualización del Parámetro de Barrera<a class="headerlink" href="#paso-3-actualizacion-del-parametro-de-barrera" title="Permalink to this heading">#</a></h2>
+<h3>Paso 3: Actualización del Parámetro de Barrera<a class="headerlink" href="#paso-3-actualizacion-del-parametro-de-barrera" title="Permalink to this heading">#</a></h3>
 <p>El parámetro de barrera μ se reduce según una estrategia predefinida, como <span class="math notranslate nohighlight">\( \mu_{k+1} = \rho \mu_k \)</span> con <span class="math notranslate nohighlight">\( 0 &lt; \rho &lt; 1 \)</span>.</p>
 </section>
 <section id="paso-4-condiciones-de-terminacion">
-<h2>Paso 4: Condiciones de Terminación<a class="headerlink" href="#paso-4-condiciones-de-terminacion" title="Permalink to this heading">#</a></h2>
+<h3>Paso 4: Condiciones de Terminación<a class="headerlink" href="#paso-4-condiciones-de-terminacion" title="Permalink to this heading">#</a></h3>
 <p>El algoritmo verifica la convergencia basándose en criterios como la norma del gradiente de la función objetivo modificada o la proximidad a las condiciones de Karush-Kuhn-Tucker (KKT).</p>
 </section>
 <section id="paso-5-extraccion-de-la-solucion">
-<h2>Paso 5: Extracción de la Solución<a class="headerlink" href="#paso-5-extraccion-de-la-solucion" title="Permalink to this heading">#</a></h2>
+<h3>Paso 5: Extracción de la Solución<a class="headerlink" href="#paso-5-extraccion-de-la-solucion" title="Permalink to this heading">#</a></h3>
 <p>Al converger, se extrae la solución actual como la aproximación óptima.</p>
+</section>
 </section>
 </section>
 
@@ -608,7 +616,7 @@ Vectores de soporte:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>Caso no separable general</strong></p>
+        <p class="prev-next-title"><strong>Punto 3</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -616,7 +624,7 @@ Vectores de soporte:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Objetivo</p>
+        <p class="prev-next-title"><strong>Punto 5</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -635,11 +643,14 @@ Vectores de soporte:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-inicializacion">Paso 1: Inicialización</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-solucion-de-subproblemas">Paso 2: Solución de Subproblemas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-actualizacion-del-parametro-de-barrera">Paso 3: Actualización del Parámetro de Barrera</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-condiciones-de-terminacion">Paso 4: Condiciones de Terminación</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-extraccion-de-la-solucion">Paso 5: Extracción de la Solución</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-del-metodo-de-puntos-interiores">Algoritmo del Método de Puntos Interiores</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-1-inicializacion">Paso 1: Inicialización</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-2-solucion-de-subproblemas">Paso 2: Solución de Subproblemas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-actualizacion-del-parametro-de-barrera">Paso 3: Actualización del Parámetro de Barrera</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-4-condiciones-de-terminacion">Paso 4: Condiciones de Terminación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-5-extraccion-de-la-solucion">Paso 5: Extracción de la Solución</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
